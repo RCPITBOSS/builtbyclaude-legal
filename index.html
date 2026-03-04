@@ -198,6 +198,61 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
+
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .sec { padding: 80px 20px; }
+  .sfull { padding: 80px 20px; }
+  .stack-sec { padding: 80px 20px; }
+  .soc-full { padding: 80px 20px; }
+  footer { padding: 20px; }
+
+  .pipe-track {
+    flex-direction: column;
+  }
+  .pn {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+  }
+  .pn:last-child { border-bottom: none; }
+  .picon { font-size: 20px; margin-bottom: 0; flex-shrink: 0; }
+  .ptt { display: none; }
+
+  .feat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nf-intro {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .sorc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stk-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .slinks {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sl { width: 100%; max-width: 280px; justify-content: center; }
+
+  .collab { font-size: clamp(48px, 15vw, 80px); }
+}
 </style>
 </head>
 <body>
