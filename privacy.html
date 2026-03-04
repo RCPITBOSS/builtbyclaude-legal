@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Built by Claude</title>
+  <meta name="description" content="Privacy Policy for Built by Claude, an AI-powered automated video creation and publishing system." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #09090b;
+      --surface:  #111116;
+      --border:   #27272a;
+      --accent:   #7c3aed;
+      --accent-d: #5b21b6;
+      --text:     #f4f4f5;
+      --muted:    #a1a1aa;
+      --subtle:   #52525b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .brand-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .brand-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    nav {
+      display: flex;
+      gap: 4px;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    nav a:hover { color: var(--text); border-color: var(--border); background: var(--bg); }
+    nav a.active { color: var(--text); border-color: var(--border); background: var(--bg); }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .page-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(26px, 4vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .effective {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    section { margin-bottom: 40px; }
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .section-num {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+    p { color: var(--muted); margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      color: var(--muted);
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    li { margin-bottom: 6px; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+    .callout p { margin: 0; font-size: 14px; }
+
+    .service-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    .service-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .service-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      vertical-align: top;
+    }
+    .service-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+    strong { color: var(--text); font-weight: 600; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 24px;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 13px; color: var(--subtle); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .service-table { display: block; overflow-x: auto; }
+      .footer-inner { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <div class="brand-dot">⚡</div>
+      <span class="brand-name">Built by Claude</span>
+    </a>
+    <nav>
+      <a href="/terms">Terms</a>
+      <a href="/privacy" class="active">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <span class="page-label">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="effective">Effective Date: March 3, 2026 &nbsp;·&nbsp; Last Updated: March 3, 2026</p>
+  </div>
+
+  <section>
+    <h2><span class="section-num">01</span> Introduction</h2>
+    <p>
+      Built by Claude ("we," "us," or "our") operates builtbyclaude.xyz, an AI-powered automated
+      video creation and publishing platform built by an independent developer. This Privacy Policy
+      explains what information we collect, how we use it, and your choices regarding that
+      information.
+    </p>
+    <div class="callout">
+      <p><strong>Short version:</strong> We collect only what is necessary to operate the Service. We do not sell your personal data. We do not share it with third parties except as required to deliver the Service or comply with the law.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="section-num">02</span> Information We Collect</h2>
+
+    <p><strong>Information you provide directly:</strong></p>
+    <ul>
+      <li><strong>OAuth access tokens</strong> — when you connect a YouTube or TikTok account, we receive and store access credentials (refresh tokens and access tokens) necessary to publish on your behalf. These tokens are stored securely on our servers and never shared with third parties beyond the issuing platform.</li>
+      <li><strong>API keys</strong> — if you configure API keys (e.g., for third-party services), those are stored encrypted and used solely to operate the Service.</li>
+    </ul>
+
+    <p><strong>Information collected automatically:</strong></p>
+    <ul>
+      <li><strong>Operational logs</strong> — we log system events (render completions, publishing activity, errors) for debugging and operational purposes. These logs may include timestamps, video titles, and platform responses. Logs are automatically deleted after 7 days.</li>
+      <li><strong>Server logs</strong> — standard web server access logs may capture IP addresses, browser user agents, and request timestamps. These are retained for up to 30 days.</li>
+    </ul>
+
+    <p><strong>Information we do not collect:</strong></p>
+    <ul>
+      <li>We do not collect your name, email address, or any personally identifiable information unless you provide it directly when contacting us.</li>
+      <li>We do not use cookies for tracking or analytics on these legal pages.</li>
+      <li>We do not run advertising or third-party analytics scripts on this website.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="section-num">03</span> How We Use Your Information</h2>
+    <p>We use the information we collect solely to:</p>
+    <ul>
+      <li>Operate and maintain the Service (generate, render, and publish video content)</li>
+      <li>Authenticate with connected social media platforms on your behalf</li>
+      <li>Debug technical issues and monitor system health</li>
+      <li>Comply with legal obligations</li>
+    </ul>
+    <p>
+      We do not use your information for advertising, profiling, or any purpose beyond the direct
+      operation of the Service.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">04</span> Third-Party Services</h2>
+    <p>
+      The Service integrates with several third-party APIs and services to function. Each has its
+      own privacy policy:
+    </p>
+
+    <table class="service-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Purpose</th>
+          <th>Privacy Policy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Anthropic (Claude)</strong></td>
+          <td>AI script and content generation</td>
+          <td><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft (Edge TTS)</strong></td>
+          <td>Text-to-speech voice synthesis</td>
+          <td><a href="https://privacy.microsoft.com" target="_blank" rel="noopener">privacy.microsoft.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Internet Archive</strong></td>
+          <td>Public domain video footage</td>
+          <td><a href="https://archive.org/about/terms.php" target="_blank" rel="noopener">archive.org/about/terms</a></td>
+        </tr>
+        <tr>
+          <td><strong>Supabase</strong></td>
+          <td>Database and data storage</td>
+          <td><a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>YouTube (Google)</strong></td>
+          <td>Video publishing via YouTube Data API</td>
+          <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>TikTok</strong></td>
+          <td>Video publishing via TikTok API</td>
+          <td><a href="https://www.tiktok.com/legal/privacy-policy" target="_blank" rel="noopener">tiktok.com/legal/privacy-policy</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      When content is published to YouTube or TikTok, those platforms receive the video file and
+      associated metadata (title, description, tags) as submitted through their APIs. Your
+      interaction with those platforms is governed by their respective privacy policies.
+    </p>
+    <p>
+      Script text is sent to Anthropic's API to generate content. We do not send personally
+      identifiable information to Anthropic as part of normal Service operation.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">05</span> Data Storage and Security</h2>
+    <p>
+      All Service data is stored on a private Virtual Private Server (VPS). We implement reasonable
+      technical measures to protect stored data, including restricted access controls and encrypted
+      credential storage.
+    </p>
+    <p>
+      Generated video files are stored locally and deleted from our servers after they have been
+      successfully published to connected platforms. Operational log data is automatically purged
+      after 7 days.
+    </p>
+    <p>
+      No method of electronic storage or transmission is 100% secure. While we take reasonable
+      precautions, we cannot guarantee absolute security of your data.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">06</span> Data Retention</h2>
+    <ul>
+      <li><strong>OAuth tokens:</strong> Retained until you revoke access through the respective platform</li>
+      <li><strong>System logs:</strong> Automatically deleted after 7 days</li>
+      <li><strong>Rendered video files:</strong> Deleted from our servers after confirmed publication</li>
+      <li><strong>Server access logs:</strong> Retained up to 30 days, then purged</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="section-num">07</span> Children's Privacy</h2>
+    <p>
+      The Service is not directed to children under the age of 13, and we do not knowingly collect
+      personal information from children under 13. If you believe we have inadvertently collected
+      such information, please contact us and we will promptly delete it.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">08</span> Your Rights</h2>
+    <p>
+      Depending on your location, you may have rights under applicable privacy laws (including GDPR
+      and the California Consumer Privacy Act) regarding your personal data, including:
+    </p>
+    <ul>
+      <li><strong>Access</strong> — the right to request a copy of data we hold about you</li>
+      <li><strong>Correction</strong> — the right to request correction of inaccurate data</li>
+      <li><strong>Deletion</strong> — the right to request deletion of your personal data</li>
+      <li><strong>Restriction</strong> — the right to request that we restrict processing of your data</li>
+      <li><strong>Data portability</strong> — the right to receive your data in a portable format</li>
+      <li><strong>Objection</strong> — the right to object to our processing of your data</li>
+    </ul>
+    <p>
+      To exercise any of these rights, please contact us using the information in Section 11.
+      Note that the most direct way to revoke the Service's access to your social media accounts
+      is to revoke the OAuth authorization directly through YouTube's or TikTok's account settings.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">09</span> California Privacy Rights (CCPA)</h2>
+    <p>
+      If you are a California resident, you have additional rights under the California Consumer
+      Privacy Act (CCPA). We do not sell personal information. We do not share personal information
+      with third parties for cross-context behavioral advertising. To exercise your rights under
+      CCPA, please contact us as described in Section 11.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">10</span> Changes to This Policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. When we make changes, we will update the
+      "Last Updated" date at the top of this page. We encourage you to review this policy
+      periodically. Your continued use of the Service after any changes constitutes acceptance of
+      the updated policy.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">11</span> Contact Us</h2>
+    <p>
+      If you have questions, concerns, or requests related to this Privacy Policy or your personal
+      data, please contact us via builtbyclaude.xyz.
+    </p>
+    <p>
+      For YouTube-specific data deletion or access requests, you may also use Google's
+      <a href="https://myaccount.google.com/data-and-privacy" target="_blank" rel="noopener">Data &amp; Privacy</a>
+      tools to manage data associated with your Google account.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Built by Claude. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="/terms">Terms of Service</a>
+      <a href="/privacy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

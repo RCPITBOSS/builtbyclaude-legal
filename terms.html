@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Built by Claude</title>
+  <meta name="description" content="Terms of Service for Built by Claude, an AI-powered automated video creation and publishing system." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #09090b;
+      --surface:  #111116;
+      --border:   #27272a;
+      --accent:   #7c3aed;
+      --accent-d: #5b21b6;
+      --text:     #f4f4f5;
+      --muted:    #a1a1aa;
+      --subtle:   #52525b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .brand-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .brand-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    nav {
+      display: flex;
+      gap: 4px;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    nav a:hover { color: var(--text); border-color: var(--border); background: var(--bg); }
+    nav a.active { color: var(--text); border-color: var(--border); background: var(--bg); }
+
+    /* ── Main ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .page-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(26px, 4vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .effective {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ── Sections ── */
+    section { margin-bottom: 40px; }
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .section-num {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+    p { color: var(--muted); margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      color: var(--muted);
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    li { margin-bottom: 6px; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+    .callout p { margin: 0; font-size: 14px; }
+
+    strong { color: var(--text); font-weight: 600; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 24px;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 13px; color: var(--subtle); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 520px) {
+      .footer-inner { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="brand">
+      <div class="brand-dot">⚡</div>
+      <span class="brand-name">Built by Claude</span>
+    </a>
+    <nav>
+      <a href="/terms" class="active">Terms</a>
+      <a href="/privacy">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <span class="page-label">Legal</span>
+    <h1>Terms of Service</h1>
+    <p class="effective">Effective Date: March 3, 2026 &nbsp;·&nbsp; Last Updated: March 3, 2026</p>
+  </div>
+
+  <section>
+    <h2><span class="section-num">01</span> Overview</h2>
+    <p>
+      Built by Claude ("we," "us," "our," or the "Service") is an AI-powered automated video
+      creation and publishing platform operated by an independent developer. The Service uses
+      artificial intelligence to generate video scripts, synthesize voiceovers, source publicly
+      available footage, assemble video content, and optionally publish that content to third-party
+      platforms including YouTube and TikTok.
+    </p>
+    <p>
+      These Terms of Service ("Terms") govern your access to and use of builtbyclaude.xyz and any
+      related services. By accessing or using the Service, you agree to be bound by these Terms. If
+      you do not agree, do not use the Service.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">02</span> Eligibility</h2>
+    <p>
+      You must be at least 13 years of age to use this Service. If you are under 18, you represent
+      that you have your parent's or legal guardian's permission to use the Service. By using the
+      Service, you represent and warrant that you meet these requirements.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">03</span> Description of Service</h2>
+    <p>Built by Claude automates the creation and distribution of video content. The Service may:</p>
+    <ul>
+      <li>Generate video scripts and written content using AI language models (Claude by Anthropic)</li>
+      <li>Synthesize voiceovers using text-to-speech technology</li>
+      <li>Source and incorporate publicly available, Creative Commons-licensed, or public domain video footage</li>
+      <li>Assemble, edit, and render video files using automated processing pipelines</li>
+      <li>Publish completed videos to connected social media accounts on third-party platforms</li>
+      <li>Track basic performance metrics from connected accounts</li>
+    </ul>
+    <p>
+      The specific features available may change over time. We reserve the right to modify, suspend,
+      or discontinue any aspect of the Service at any time without notice.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">04</span> AI-Generated Content</h2>
+    <div class="callout">
+      <p><strong>All scripts, voiceovers, and content produced by this Service are generated by artificial intelligence.</strong> AI-generated content may contain inaccuracies, errors, or omissions. It is not a substitute for professional legal, financial, medical, or other advice.</p>
+    </div>
+    <p>
+      We make no representations or warranties that AI-generated content is accurate, factual,
+      complete, current, or appropriate for any particular purpose. Content produced by the Service
+      should be reviewed by a human before publication. By using the Service, you acknowledge that
+      you are responsible for reviewing, approving, and taking responsibility for any content
+      published through your connected accounts.
+    </p>
+    <p>
+      The Service is designed to assist content creators and does not constitute journalism,
+      professional reporting, or editorial services.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">05</span> Third-Party Platform Compliance</h2>
+    <p>
+      The Service publishes content to third-party platforms that have their own terms of service
+      and community guidelines. By using the Service to publish content, you agree to comply with
+      the terms and policies of all applicable platforms, including but not limited to:
+    </p>
+    <ul>
+      <li><a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a></li>
+      <li><a href="https://www.tiktok.com/legal/terms-of-service" target="_blank" rel="noopener">TikTok Terms of Service</a></li>
+      <li><a href="https://help.instagram.com/581066165581870" target="_blank" rel="noopener">Instagram Terms of Use</a></li>
+    </ul>
+    <p>
+      You are solely responsible for ensuring that content published through the Service complies
+      with all applicable platform policies, community guidelines, copyright rules, and applicable
+      laws. We are not responsible for content removed, accounts suspended, or any other actions
+      taken by third-party platforms against your account.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">06</span> Source Content and Licensing</h2>
+    <p>
+      The Service may incorporate video footage obtained from sources including the Internet Archive,
+      C-SPAN, and other repositories of Creative Commons-licensed or public domain material. While we
+      make reasonable efforts to use properly licensed footage, we make no guarantee that all source
+      content is free of third-party intellectual property claims.
+    </p>
+    <p>
+      You acknowledge that it is your responsibility to review published content and respond to any
+      copyright or intellectual property claims made by third parties, including through YouTube's
+      Content ID system or TikTok's rights management processes.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">07</span> Your Account and Connected Services</h2>
+    <p>
+      To use publishing features, you must connect your social media accounts by authorizing the
+      Service via OAuth. You are responsible for maintaining the security of your account credentials
+      and access tokens. You agree to notify us immediately of any unauthorized use of your
+      connected accounts.
+    </p>
+    <p>
+      You grant the Service permission to access and act on your connected accounts solely as
+      necessary to provide the features you have enabled, including reading account information and
+      uploading content. You may revoke this access at any time through the respective platform's
+      account settings.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">08</span> Prohibited Uses</h2>
+    <p>You agree not to use the Service to:</p>
+    <ul>
+      <li>Generate or publish false, defamatory, or maliciously misleading content</li>
+      <li>Impersonate any person, organization, or entity</li>
+      <li>Harass, threaten, or harm any individual</li>
+      <li>Violate any applicable law or regulation, including copyright and privacy law</li>
+      <li>Publish content that violates platform-specific prohibited content policies</li>
+      <li>Attempt to circumvent, reverse engineer, or exploit the Service infrastructure</li>
+      <li>Use the Service in a manner that could damage, disable, or impair its operation</li>
+      <li>Engage in any automated scraping, crawling, or data harvesting of the Service</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="section-num">09</span> Intellectual Property</h2>
+    <p>
+      The Service, its design, code, and systems are the property of the operator and are protected
+      by applicable intellectual property laws. You may not copy, reproduce, or distribute any part
+      of the Service without express written permission.
+    </p>
+    <p>
+      AI-generated scripts and content produced by the Service on your behalf are intended for your
+      use. You retain ownership of your social media channels and any content you publish to them.
+      You grant us a limited license to store, process, and transmit content solely as necessary to
+      provide the Service.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">10</span> Disclaimers of Warranty</h2>
+    <p>
+      THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY
+      KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF
+      MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+    </p>
+    <p>
+      WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR FREE OF
+      VIRUSES OR OTHER HARMFUL COMPONENTS. WE DO NOT WARRANT THE ACCURACY, COMPLETENESS, OR
+      RELIABILITY OF ANY AI-GENERATED CONTENT.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">11</span> Limitation of Liability</h2>
+    <p>
+      TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL WE BE LIABLE FOR ANY
+      INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED
+      TO LOSS OF PROFITS, DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:
+    </p>
+    <ul>
+      <li>Your use of or inability to use the Service</li>
+      <li>Any AI-generated content produced by the Service</li>
+      <li>Content published to third-party platforms through the Service</li>
+      <li>Actions taken by third-party platforms against your account</li>
+      <li>Unauthorized access to or alteration of your content or data</li>
+    </ul>
+    <p>
+      OUR TOTAL LIABILITY TO YOU FOR ALL CLAIMS ARISING FROM OR RELATED TO THE SERVICE SHALL NOT
+      EXCEED ONE HUNDRED DOLLARS ($100.00).
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">12</span> Indemnification</h2>
+    <p>
+      You agree to indemnify, defend, and hold harmless the Service operator and any affiliates from
+      and against any claims, damages, losses, liabilities, costs, and expenses (including reasonable
+      legal fees) arising from: (a) your use of the Service; (b) any content you publish through the
+      Service; (c) your violation of these Terms; or (d) your violation of any third-party rights.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">13</span> Termination</h2>
+    <p>
+      We reserve the right to suspend or terminate your access to the Service at any time, for any
+      reason, including if we believe you have violated these Terms. You may stop using the Service
+      at any time by revoking any connected OAuth authorizations through your social media platform
+      account settings.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">14</span> Changes to These Terms</h2>
+    <p>
+      We may update these Terms at any time. When we do, we will revise the "Last Updated" date at
+      the top of this page. Continued use of the Service after changes are posted constitutes your
+      acceptance of the updated Terms. We encourage you to review these Terms periodically.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">15</span> Governing Law</h2>
+    <p>
+      These Terms shall be governed by and construed in accordance with the laws of the United
+      States, without regard to conflict of law principles. Any disputes shall be resolved through
+      binding arbitration or in the courts of competent jurisdiction in the United States.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="section-num">16</span> Contact</h2>
+    <p>
+      If you have questions about these Terms, please reach out via the contact information on
+      <a href="https://builtbyclaude.xyz">builtbyclaude.xyz</a>.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">&copy; 2026 Built by Claude. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="/terms">Terms of Service</a>
+      <a href="/privacy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
