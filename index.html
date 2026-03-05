@@ -266,7 +266,39 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
   .slabel { justify-content: center; }
   footer { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
   .flinks { justify-content: center; }
+  .subscribe-form { flex-direction: column; }
+  .signal-input { width: 100%; border-radius: 2px; }
+  .subscribe-form .cta-btn { border-radius: 2px; width: 100%; justify-content: center; }
 }
+
+/* PROJECT_03 — SIGNAL */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;}
+.cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--bg);background:var(--cyan);border:none;padding:14px 28px;border-radius:2px;cursor:none;transition:background .2s,box-shadow .2s,transform .15s;font-weight:600;}
+.cta-btn:hover{background:#00ffe0;box-shadow:0 0 30px rgba(0,255,240,.35);transform:translateY(-2px);}
+.cta-sub{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;}
+.subscribe-form{display:flex;align-items:stretch;}
+.signal-input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-right:none;color:var(--text);font-family:var(--mono);font-size:13px;padding:14px 20px;border-radius:2px 0 0 2px;width:280px;outline:none;transition:border-color .2s;}
+.signal-input:focus{border-color:var(--cyan);}
+.subscribe-form .cta-btn{border-radius:0 2px 2px 0;}
+.signal-feed{border:1px solid var(--border);background:rgba(255,255,255,.02);border-radius:4px;overflow:hidden;}
+.sf-hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02);}
+.sf-hdr-left{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;}
+.sf-badge{font-family:var(--mono);font-size:9px;color:var(--cyan);border:1px solid rgba(0,255,240,.2);border-radius:2px;padding:2px 6px;letter-spacing:.1em;}
+.sf-body{padding:16px;display:flex;flex-direction:column;gap:12px;max-height:280px;overflow:hidden;}
+.trend-item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border:1px solid var(--border);border-radius:3px;background:rgba(255,255,255,.015);transition:background .2s,border-color .2s;cursor:default;}
+.trend-item:hover{background:rgba(124,58,237,.06);border-color:rgba(124,58,237,.3);}
+.trend-rank{font-family:var(--display);font-size:28px;color:rgba(74,74,106,.5);line-height:1;min-width:28px;}
+.trend-rank.hot{color:var(--cyan);text-shadow:0 0 12px rgba(0,255,240,.4);}
+.trend-info{flex:1;}
+.trend-topic{font-family:var(--mono);font-size:11px;color:var(--text);letter-spacing:.05em;margin-bottom:4px;}
+.trend-meta{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.05em;}
+.trend-score{font-family:var(--display);font-size:20px;color:var(--green);align-self:center;}
+.trend-score.warm{color:var(--orange);}
+.trend-score.cold{color:var(--muted);}
+.sub-track{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;}
+.sub-badge{font-family:var(--mono);font-size:10px;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:5px 12px;letter-spacing:.08em;transition:color .2s,border-color .2s,background .2s;cursor:default;}
+.sub-badge:hover{color:var(--cyan);border-color:rgba(0,255,240,.3);background:rgba(0,255,240,.05);}
 </style>
 </head>
 <body>
@@ -463,6 +495,122 @@ footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-i
 
 <div class="sec-sep"></div>
 
+<!-- AI BUILDER SIGNAL -->
+<div class="sfull">
+<div class="sec">
+
+  <div class="slabel reveal">PROJECT_03 // AI BUILDER SIGNAL</div>
+  <h2 class="stitle reveal">WEEKLY REDDIT<br><span style="color:var(--cyan)">INTELLIGENCE</span> / <span style="color:var(--purple2)">DIGEST</span></h2>
+  <p class="sdesc reveal">We scrape the AI builder subreddits so you don't have to. Every week: trending topics, emerging pain points, product gaps, and one prompt worth stealing. Free. Automated. Straight to your inbox.</p>
+
+  <div class="tags stagger">
+    <span class="tag">Reddit API</span>
+    <span class="tag">Node.js</span>
+    <span class="tag">Supabase</span>
+    <span class="tag">Groq / Llama 3</span>
+    <span class="tag">Resend</span>
+    <span class="tag">PM2</span>
+    <span class="tag">Vercel</span>
+    <span class="tag">PostgreSQL</span>
+  </div>
+
+  <div class="nf-intro reveal" style="margin-top:0;">
+
+    <div>
+      <div class="stat-grid stagger">
+        <div class="stat-cell"><div class="stat-num">25</div><div class="stat-lbl">Subreddits</div></div>
+        <div class="stat-cell"><div class="stat-num">3K+</div><div class="stat-lbl">Posts / Week</div></div>
+        <div class="stat-cell"><div class="stat-num">1</div><div class="stat-lbl">Digest / Week</div></div>
+        <div class="stat-cell"><div class="stat-num" style="color:var(--green);text-shadow:0 0 20px rgba(0,255,136,.4)">FREE</div><div class="stat-lbl">Forever</div></div>
+      </div>
+      <div class="sub-track stagger">
+        <span class="sub-badge">r/ClaudeAI</span>
+        <span class="sub-badge">r/LocalLLaMA</span>
+        <span class="sub-badge">r/ChatGPT</span>
+        <span class="sub-badge">r/SideProject</span>
+        <span class="sub-badge">r/MachineLearning</span>
+        <span class="sub-badge">r/OpenAI</span>
+        <span class="sub-badge">r/AI_Agents</span>
+        <span class="sub-badge">r/artificial</span>
+      </div>
+    </div>
+
+    <div class="signal-feed">
+      <div class="sf-hdr">
+        <div class="sf-hdr-left">
+          <div class="live-pulse"></div>
+          THIS WEEK'S SIGNAL
+        </div>
+        <span class="sf-badge">LIVE TRENDS</span>
+      </div>
+      <div class="sf-body">
+        <div class="trend-item">
+          <div class="trend-rank hot">01</div>
+          <div class="trend-info">
+            <div class="trend-topic">CLAUDE CODE CONTEXT WINDOW LIMITS</div>
+            <div class="trend-meta">r/ClaudeAI · 847 posts · ↑ 312% this week</div>
+          </div>
+          <div class="trend-score">🔥</div>
+        </div>
+        <div class="trend-item">
+          <div class="trend-rank hot">02</div>
+          <div class="trend-info">
+            <div class="trend-topic">LOCAL MODEL VS API COST COMPARISON</div>
+            <div class="trend-meta">r/LocalLLaMA · 634 posts · ↑ 189% this week</div>
+          </div>
+          <div class="trend-score">🔥</div>
+        </div>
+        <div class="trend-item">
+          <div class="trend-rank" style="color:var(--orange)">03</div>
+          <div class="trend-info">
+            <div class="trend-topic">AUTOMATED CONTENT PIPELINES</div>
+            <div class="trend-meta">r/SideProject · 412 posts · ↑ 97% this week</div>
+          </div>
+          <div class="trend-score warm">📈</div>
+        </div>
+        <div class="trend-item">
+          <div class="trend-rank">04</div>
+          <div class="trend-info">
+            <div class="trend-topic">MCP SERVER INTEGRATIONS</div>
+            <div class="trend-meta">r/ClaudeAI · 389 posts · ↑ 74% this week</div>
+          </div>
+          <div class="trend-score warm">📈</div>
+        </div>
+        <div class="trend-item">
+          <div class="trend-rank">05</div>
+          <div class="trend-info">
+            <div class="trend-topic">SUPABASE + AI STACK SETUPS</div>
+            <div class="trend-meta">r/SideProject · 201 posts · ↑ 41% this week</div>
+          </div>
+          <div class="trend-score cold">→</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="feat-grid stagger">
+    <div class="fc"><div class="fc-num">01</div><span class="fc-icon">🔥</span><div class="fc-title">TRENDING TOPICS</div><p class="fc-desc">The conversations gaining traction before they peak on Twitter. Early signal for builders, not lagging indicators.</p></div>
+    <div class="fc"><div class="fc-num">02</div><span class="fc-icon">😤</span><div class="fc-title">PAIN POINT OF THE WEEK</div><p class="fc-desc">Most upvoted frustration from the AI community. Pure product research, handed to you every Sunday.</p></div>
+    <div class="fc"><div class="fc-num">03</div><span class="fc-icon">💡</span><div class="fc-title">OPPORTUNITY SPOTLIGHT</div><p class="fc-desc">A recurring question with no good answer yet. A gap nobody's filled. We surface it so you can build it.</p></div>
+    <div class="fc"><div class="fc-num">04</div><span class="fc-icon">📈</span><div class="fc-title">SUBREDDIT HEAT MAP</div><p class="fc-desc">Which communities are exploding, which are dying, where the conversation is moving. Week over week.</p></div>
+    <div class="fc"><div class="fc-num">05</div><span class="fc-icon">🛠️</span><div class="fc-title">TOOL OF THE WEEK</div><p class="fc-desc">One project or tool that actually got traction this week. Not sponsored — just what Reddit responded to.</p></div>
+    <div class="fc"><div class="fc-num">06</div><span class="fc-icon">⚡</span><div class="fc-title">ONE PROMPT WORTH STEALING</div><p class="fc-desc">A Claude Code workflow or prompt pulled from top posts. Copy-pasteable. Immediately useful.</p></div>
+  </div>
+
+  <div class="cta-row reveal">
+    <div class="subscribe-form">
+      <input type="email" id="signalEmail" placeholder="your@email.com" class="signal-input" />
+      <button onclick="subscribeSignal()" class="cta-btn">GET THE SIGNAL →</button>
+    </div>
+    <span id="signalMsg" class="cta-sub"></span>
+  </div>
+
+</div>
+</div>
+
+<div class="sec-sep"></div>
+
 <!-- STACK -->
 <div class="stack-sec">
   <div class="reveal">
@@ -536,7 +684,7 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
   cdot.style.left=mx+'px';cdot.style.top=my+'px';
   requestAnimationFrame(anim);
 })();
-document.querySelectorAll('a,button,.pn,.fc,.sf,.si,.stat-cell').forEach(el=>{
+document.querySelectorAll('a,button,.pn,.fc,.sf,.si,.stat-cell,.trend-item,.sub-badge').forEach(el=>{
   el.addEventListener('mouseenter',()=>cursor.classList.add('expanded'));
   el.addEventListener('mouseleave',()=>cursor.classList.remove('expanded'));
 });
@@ -620,6 +768,39 @@ function addLog(){
 // Seed with initial lines
 for(let i=0;i<6;i++)addLog();
 setInterval(addLog,2600);
+
+// ── SUBSCRIBE ─────────────────────────────────────────────────────
+async function subscribeSignal() {
+  const email = document.getElementById('signalEmail').value;
+  const msg = document.getElementById('signalMsg');
+  if (!email) return;
+  msg.textContent = 'SUBSCRIBING...';
+  msg.style.color = '';
+  try {
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ email })
+    });
+    const data = await res.json();
+    if (data.success) {
+      msg.textContent = '✓ YOU\'RE IN. FIRST ISSUE SUNDAY.';
+      msg.style.color = 'var(--green)';
+      document.getElementById('signalEmail').value = '';
+    } else {
+      msg.textContent = data.error || 'SOMETHING WENT WRONG.';
+      msg.style.color = 'var(--red)';
+    }
+  } catch(e) {
+    msg.textContent = 'SOMETHING WENT WRONG. TRY AGAIN.';
+    msg.style.color = 'var(--red)';
+  }
+}
+
+// Allow Enter key in email input
+document.getElementById('signalEmail').addEventListener('keydown', e => {
+  if (e.key === 'Enter') subscribeSignal();
+});
 </script>
 </body>
 </html>
