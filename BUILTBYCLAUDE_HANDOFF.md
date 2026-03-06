@@ -137,7 +137,7 @@ Set in Vercel Dashboard → builtbyclaude-legal → Settings → Environment Var
 | 1 | Digest / Week |
 | FREE | Forever |
 
-**Tech Tags:** Reddit API, Node.js, Supabase, Groq / Llama 3, Resend, PM2, Vercel, PostgreSQL
+**Tech Tags:** Reddit API, Node.js, Supabase, Groq / Llama 3, Brevo SMTP, PM2, Vercel, PostgreSQL
 
 **Subscribe Form:**
 ```html
@@ -179,7 +179,7 @@ The AI Builder Signal pipeline is a **separate Node.js project** — not in this
 | `discover.js` (launchd) | Mac | Daily 5am | Finds AI builder subreddits, upserts to `signal_subreddits` |
 | `scraper.js` (launchd) | Mac | Daily 6am | Scrapes posts from active subreddits, populates `signal_posts` + `signal_trends` |
 | `signal-digest` (PM2) | VPS | Sunday 8am | Calls Groq/LLaMA 3.3, generates digest, saves to `signal_digests` |
-| `signal-sender` (PM2) | VPS | Sunday 9am | Sends digest to all subscribers via Resend |
+| `signal-sender` (PM2) | VPS | Sunday 9am | Sends digest to all subscribers via Brevo SMTP |
 
 **Why Mac for scrapers:** Hetzner VPS IP (5.161.220.250) is blocked by Reddit (HTTP 403). Mac runs from a residential IP. Reddit OAuth credentials were explicitly not used — scraper uses public `.json` endpoints only.
 
@@ -198,7 +198,8 @@ The AI Builder Signal pipeline is a **separate Node.js project** — not in this
 SUPABASE_URL=https://cgpiltgxyeaxjgwcsewu.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...
 GROQ_API_KEY=gsk_...
-RESEND_API_KEY=re_...   ← MUST BE FILLED IN before first send
+BREVO_SMTP_USER=a42331001@smtp-brevo.com
+BREVO_SMTP_KEY=xsmtpsib-...
 USER_AGENT=ai-builder-signal/1.0 (by builtbyclaude.xyz)
 ```
 
@@ -234,11 +235,11 @@ Multiple rounds of margin/padding adjustments to the PROJECT_03 section:
 
 ## Open Issues
 
-### PROJECT_03 — Digest HTML needs redesign
-The generated email HTML from `digest.js` doesn't match the builtbyclaude.xyz aesthetic. It should use the dark background (`#040408`), cyan/purple palette, Share Tech Mono font, and Bebas Neue headers. Currently generic.
+### PROJECT_03 — Digest HTML needs redesign ✅ DONE
+Dark terminal aesthetic implemented — `#040408` background, `#00fff0` cyan + `#8b5cf6` purple accents, Courier New monospace, Gmail-compatible solid hex colors throughout. Tested and delivered.
 
-### PROJECT_03 — Subreddit blocklist needs tuning
-`discover.js` surfaces off-topic subreddits (e.g., r/Showerthoughts) via its keyword searches. A blocklist or relevance filter is needed in `discover.js` to exclude non-AI-builder communities.
+### PROJECT_03 — Subreddit blocklist needs tuning ✅ DONE
+Blocklist added to `discover.js`. 15 off-topic subreddits deactivated in Supabase. Active list tuned to 17 builder-focused communities. Groq prompt updated with explicit ONLY/NEVER topic rules.
 
 ### PROJECT_03 — Supabase usage limits warning
 Supabase flagged a usage warning after the initial bulk scrape (~3,000+ posts). Investigate which limit was hit. May need a retention policy to prune `signal_posts` older than 30 days.
@@ -253,33 +254,17 @@ The Sunday pipeline is fully automatic (digest at 8am → send at 9am). There's 
 
 ## Next Steps
 
-1. **Add `RESEND_API_KEY` to VPS** — required before first email send
-   ```bash
-   ssh -i ~/.ssh/nicheflow root@5.161.220.250
-   nano /root/ai-builder-signal/.env
-   pm2 restart signal-sender
-   ```
+1. ✅ **Brevo SMTP configured** — `BREVO_SMTP_USER` + `BREVO_SMTP_KEY` set on VPS and Mac, test sends successful
 
-2. **Set Vercel env vars** — `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` on builtbyclaude-legal project
+2. ✅ **First real email sent** — `node send.js` tested, delivered to brianbengreenbaum@gmail.com
 
-3. **Create `signal_subscribers` table** — run in Supabase SQL editor if not yet done:
-   ```sql
-   CREATE TABLE signal_subscribers (
-     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-     email text UNIQUE NOT NULL,
-     active boolean DEFAULT true,
-     unsubscribe_token uuid DEFAULT gen_random_uuid(),
-     created_at timestamptz DEFAULT now()
-   );
-   ```
+3. ✅ **Subreddit discovery tuned** — 15 off-topic subs deactivated, blocklist added to `discover.js`, 17 clean active subs
 
-4. **Test subscribe form** — visit builtbyclaude.xyz, submit an email, verify row in Supabase
+4. ✅ **Digest email template redesigned** — dark terminal aesthetic, Gmail-compatible, solid hex colors
 
-5. **Send first real email** — once RESEND key is set, `node send.js` from VPS
+5. **Set Vercel env vars** — `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` on builtbyclaude-legal project (required for subscribe/unsubscribe endpoints)
 
-6. **Tune subreddit discovery** — review `signal_subreddits` in Supabase, deactivate off-topic ones, add blocklist to `discover.js`
-
-7. **Redesign digest email template** — update HTML template in `digest.js` to match site aesthetic
+6. **Test subscribe form** — visit builtbyclaude.xyz, submit an email, verify row in Supabase
 
 ---
 
