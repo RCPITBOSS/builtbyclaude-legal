@@ -3,779 +3,659 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Built by Claude</title>
+<title>BUILT BY CLAUDE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
   --bg: #040408;
+  --surface: #07070f;
+  --border: rgba(120,80,255,0.15);
+  --cyan: #00e5ff;
   --purple: #7c3aed;
-  --purple2: #a855f7;
-  --cyan: #00fff0;
-  --cyan-dim: rgba(0,255,240,0.08);
-  --green: #00ff88;
-  --orange: #ff6b00;
-  --red: #ff003c;
-  --text: #e8e8f0;
-  --muted: #4a4a6a;
-  --border: rgba(255,255,255,0.06);
-  --mono: 'Share Tech Mono', monospace;
-  --display: 'Bebas Neue', sans-serif;
-  --body: 'Inter', sans-serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;overflow-x:hidden;}
-body{background:var(--bg);color:var(--text);font-family:var(--body);cursor:none;}
-body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.07) 2px,rgba(0,0,0,0.07) 4px);pointer-events:none;z-index:999;}
-
-/* CURSOR — crosshair style */
-.cursor{position:fixed;width:24px;height:24px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;}
-.cursor::before{content:'';position:absolute;top:50%;left:0;width:8px;height:1px;transform:translateY(-50%);background:var(--cyan);box-shadow:16px 0 0 var(--cyan);transition:background .15s,box-shadow .15s;}
-.cursor::after{content:'';position:absolute;left:50%;top:0;width:1px;height:8px;transform:translateX(-50%);background:var(--cyan);box-shadow:0 16px 0 var(--cyan);transition:background .15s,box-shadow .15s;}
-.cursor-dot{position:fixed;width:3px;height:3px;background:var(--cyan);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;}
-.cursor.expanded::before{background:var(--purple2);box-shadow:16px 0 0 var(--purple2);}
-.cursor.expanded::after{background:var(--purple2);box-shadow:0 16px 0 var(--purple2);}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(4,4,8,0.92);backdrop-filter:blur(20px);}
-.nav-bolt{width:28px;height:28px;background:var(--purple);clip-path:polygon(60% 0%,40% 45%,70% 45%,35% 100%,55% 55%,25% 55%);animation:boltPulse 3s ease-in-out infinite;flex-shrink:0;}
-@keyframes boltPulse{0%,100%{filter:drop-shadow(0 0 4px var(--purple));}50%{filter:drop-shadow(0 0 14px var(--purple2));}}
-.nav-left{display:flex;align-items:center;gap:12px;}
-.nav-brand{font-family:var(--display);font-size:20px;letter-spacing:.1em;}
-.nav-status{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--muted);}
-.sdot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:sp 2s infinite;}
-@keyframes sp{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,255,136,.4);}50%{opacity:.7;box-shadow:0 0 0 4px rgba(0,255,136,0);}}
-
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 40px 60px;position:relative;overflow:hidden;}
-.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.04) 1px,transparent 1px);background-size:40px 40px;}
-.hradial{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(124,58,237,.12) 0%,transparent 65%);pointer-events:none;}
-.hero-eye{font-family:var(--mono);font-size:12px;color:var(--cyan);letter-spacing:.3em;text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fi .5s ease .3s forwards;}
-.hero-eye span{color:var(--muted);}
-.hero-title{font-family:var(--display);font-size:clamp(80px,14vw,180px);line-height:.9;letter-spacing:.02em;text-align:center;position:relative;opacity:0;animation:fi .5s ease .5s forwards;}
-.hero-title .line2{background:linear-gradient(90deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;}
-.hplus{font-family:var(--mono);font-size:clamp(32px,5vw,60px);color:var(--purple2);display:block;line-height:1.4;}
-.hero-sub{font-family:var(--mono);font-size:13px;color:var(--muted);max-width:560px;line-height:1.8;text-align:center;margin-top:32px;opacity:0;animation:fi .5s ease .8s forwards;}
-.hero-sub .hl{color:var(--cyan);}
-.tline{display:flex;align-items:center;gap:8px;margin-top:48px;font-family:var(--mono);font-size:13px;opacity:0;animation:fi .5s ease 1.1s forwards;}
-.prompt{color:var(--green);}
-.cblink{display:inline-block;width:8px;height:16px;background:var(--cyan);animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
-.scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fi 1s ease 2s forwards;}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--purple),transparent);animation:sd 2s ease infinite;}
-@keyframes sd{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
-@keyframes fi{to{opacity:1;}}
-
-/* GLITCH */
-.glitch{position:relative;}
-.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;}
-.glitch::before{color:var(--cyan);animation:gl 6s infinite;opacity:.25;}
-.glitch::after{color:var(--red);animation:gl 6s infinite reverse 1s;opacity:.15;}
-@keyframes gl{0%,90%,100%{clip-path:inset(50% 0 50% 0);transform:translate(0);}92%{clip-path:inset(20% 0 60% 0);transform:translate(-3px,0);}94%{clip-path:inset(60% 0 20% 0);transform:translate(3px,0);}96%{clip-path:inset(40% 0 40% 0);transform:translate(-2px,0);}98%{clip-path:inset(0 0 0 0);transform:translate(0);}}
-
-/* SECTION SEPARATORS — full chapter breaks */
-.sec-sep{height:0;padding:64px 0;position:relative;flex-shrink:0;}
-.sec-sep::before{content:'';position:absolute;top:50%;left:4%;right:4%;height:1px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,rgba(124,58,237,.5),rgba(0,255,240,.4),rgba(124,58,237,.5),transparent);}
-.sec-sep::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(4,4,8,0) 0%,rgba(124,58,237,.04) 50%,rgba(4,4,8,0) 100%);}
-
-/* SECTIONS */
-.sec{padding:64px 48px;max-width:1280px;margin:0 auto;position:relative;}
-.sfull{padding:0 48px;position:relative;}
-.slabel{font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:.35em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:14px;}
-.slabel::before{content:'';width:40px;height:1px;background:var(--cyan);}
-.stitle{font-family:var(--display);font-size:clamp(56px,8vw,112px);line-height:.92;letter-spacing:.02em;margin-bottom:24px;}
-.sdesc{font-size:15px;color:var(--muted);max-width:520px;line-height:2;font-weight:300;}
-
-/* STATS GRID */
-.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
-.stat-cell{background:rgba(124,58,237,.05);padding:28px 24px;transition:background .3s;position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:130px;}
-.stat-cell:hover{background:rgba(124,58,237,.13);}
-.stat-num{font-family:var(--display);font-size:52px;line-height:1;color:var(--cyan);text-shadow:0 0 20px rgba(0,255,240,.3);}
-.stat-lbl{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-top:6px;}
-
-/* NICHE INTRO */
-.nf-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:88px;}
-@media(max-width:900px){.nf-intro{grid-template-columns:1fr;}}
-
-/* TECH TAGS */
-.tag{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.22);border-radius:3px;padding:4px 10px;font-family:var(--mono);font-size:10px;color:rgba(168,85,247,.85);letter-spacing:.08em;display:inline-block;margin:3px;}
-
-/* PIPELINE — enhanced hover */
-.pipe-wrap{margin-bottom:88px;}
-.pipe-hdr{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
-.pipe-hdr::after{content:'';flex:1;height:1px;background:var(--border);}
-.pipe-track{display:flex;align-items:stretch;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
-.pn{flex:1;position:relative;background:rgba(4,4,8,.9);padding:32px 14px;text-align:center;border-right:1px solid var(--border);cursor:pointer;transition:background .25s,box-shadow .3s;}
-.pn:last-child{border-right:none;}
-/* Top accent bar sweeps left→right on hover */
-.pn::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.4,0,.2,1);}
-.pn:hover::before{transform:scaleX(1);}
-/* Bottom glow line fades in on hover */
-.pn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;opacity:0;transition:opacity .3s;}
-.pn:hover::after{opacity:1;}
-.pn.sc::before{background:var(--cyan);}
-.pn.sc::after{background:var(--cyan);box-shadow:0 0 10px var(--cyan);}
-.pn.sc:hover{background:rgba(0,255,240,.05);box-shadow:inset 0 0 60px rgba(0,255,240,.07);}
-.pn.sg::before{background:var(--purple2);}
-.pn.sg::after{background:var(--purple2);box-shadow:0 0 10px var(--purple2);}
-.pn.sg:hover{background:rgba(168,85,247,.06);box-shadow:inset 0 0 60px rgba(168,85,247,.09);}
-.pn.vg::before{background:var(--green);}
-.pn.vg::after{background:var(--green);box-shadow:0 0 10px var(--green);}
-.pn.vg:hover{background:rgba(0,255,136,.05);box-shadow:inset 0 0 60px rgba(0,255,136,.07);}
-.pn.rn::before{background:var(--orange);}
-.pn.rn::after{background:var(--orange);box-shadow:0 0 10px var(--orange);}
-.pn.rn:hover{background:rgba(255,107,0,.05);box-shadow:inset 0 0 60px rgba(255,107,0,.08);}
-.pn.rv::before{background:#ec4899;}
-.pn.rv::after{background:#ec4899;box-shadow:0 0 10px #ec4899;}
-.pn.rv:hover{background:rgba(236,72,153,.05);box-shadow:inset 0 0 60px rgba(236,72,153,.08);}
-.pn.ps::before{background:var(--purple);}
-.pn.ps::after{background:var(--purple);box-shadow:0 0 10px var(--purple);}
-.pn.ps:hover{background:rgba(124,58,237,.07);box-shadow:inset 0 0 60px rgba(124,58,237,.1);}
-.picon{font-size:26px;margin-bottom:10px;display:block;transition:transform .25s;}
-.pn:hover .picon{transform:scale(1.18);}
-.pname{font-family:var(--mono);font-size:11px;color:var(--text);letter-spacing:.1em;margin-bottom:4px;}
-.ptech{font-family:var(--mono);font-size:9px;color:var(--muted);}
-
-/* TOOLTIP */
-.ptt{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(8px);width:220px;background:#0d0d18;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:16px;opacity:0;pointer-events:none;transition:all .2s;z-index:200;text-align:left;}
-.pn:hover .ptt{opacity:1;transform:translateX(-50%) translateY(0);}
-.tt-n{font-family:var(--mono);font-size:11px;color:var(--cyan);margin-bottom:8px;letter-spacing:.1em;}
-.tt-d{font-size:12px;color:var(--muted);line-height:1.7;font-weight:300;}
-.tta{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%) rotate(45deg);width:8px;height:8px;background:#0d0d18;border-right:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);}
-
-/* FEATURES */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:56px;}
-@media(max-width:900px){.feat-grid{grid-template-columns:1fr 1fr;}}
-.fc{background:var(--bg);padding:32px 28px;transition:background .3s;position:relative;}
-.fc:hover{background:rgba(124,58,237,.06);}
-.fc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent);opacity:0;transition:opacity .3s;}
-.fc:hover::after{opacity:1;}
-.fc-num{font-family:var(--mono);font-size:9px;color:var(--purple2);letter-spacing:.2em;margin-bottom:12px;}
-.fc-icon{font-size:20px;margin-bottom:10px;display:block;}
-.fc-title{font-family:var(--display);font-size:20px;letter-spacing:.05em;margin-bottom:8px;}
-.fc-desc{font-size:12px;color:var(--muted);line-height:1.75;font-weight:300;}
-
-/* SOURCES */
-.src-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:56px;}
-.src{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:4px;padding:9px 16px;font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;transition:all .2s;cursor:default;}
-.src:hover{border-color:rgba(0,255,240,.3);color:var(--cyan);background:rgba(0,255,240,.05);}
-.src .d{width:6px;height:6px;border-radius:50%;background:var(--green);}
-
-/* TERMINAL TICKER */
-.ticker-wrap{margin-top:48px;}
-.ticker-hdr{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
-.ticker-hdr::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:sp 1.5s infinite;flex-shrink:0;}
-.ticker-term{background:#030307;border:1px solid rgba(0,255,136,.12);border-radius:8px;overflow:hidden;box-shadow:0 0 40px rgba(0,255,136,.04);}
-.ticker-bar{background:rgba(0,0,0,.5);border-bottom:1px solid rgba(0,255,136,.08);padding:10px 16px;display:flex;align-items:center;gap:8px;}
-.ticker-title{font-family:var(--mono);font-size:10px;color:rgba(0,255,136,.35);margin-left:6px;letter-spacing:.1em;flex:1;}
-.live-badge{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;color:var(--green);letter-spacing:.2em;opacity:.8;}
-.live-pulse{width:5px;height:5px;border-radius:50%;background:var(--green);animation:sp 1.5s infinite;}
-.ticker-body{padding:14px 20px;font-family:var(--mono);font-size:11px;line-height:1.95;height:185px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;position:relative;}
-.ticker-body::-webkit-scrollbar{display:none;}
-.tlog{display:flex;gap:10px;flex-wrap:nowrap;opacity:0;animation:logIn .25s ease forwards;}
-@keyframes logIn{to{opacity:1;}}
-.tlog .ts{color:rgba(74,74,106,.55);white-space:nowrap;flex-shrink:0;}
-.tlog .lvl-info{color:rgba(0,255,240,.7);flex-shrink:0;}
-.tlog .lvl-warn{color:var(--orange);flex-shrink:0;}
-.tlog .lvl-success{color:var(--green);flex-shrink:0;}
-.tlog .lvl-error{color:var(--red);flex-shrink:0;}
-.tlog .wrk{color:rgba(168,85,247,.7);flex-shrink:0;}
-.tlog .msg{color:rgba(232,232,240,.4);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-
-/* SORC */
-.sorc-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-@media(max-width:900px){.sorc-grid{grid-template-columns:1fr;}}
-.term{background:#06060e;border:1px solid rgba(0,255,136,.15);border-radius:8px;overflow:hidden;box-shadow:0 0 60px rgba(0,255,136,.05);}
-.term-bar{background:rgba(0,255,136,.05);border-bottom:1px solid rgba(0,255,136,.1);padding:10px 16px;display:flex;align-items:center;gap:8px;}
-.tdots{display:flex;gap:6px;}
-.td{width:10px;height:10px;border-radius:50%;}
-.tdr{background:#ff5f57;}.tdy{background:#febc2e;}.tdg{background:#28c840;}
-.ttitle{font-family:var(--mono);font-size:10px;color:rgba(0,255,136,.4);margin-left:8px;letter-spacing:.1em;}
-.tbody{padding:20px 24px;font-family:var(--mono);font-size:12px;line-height:2;}
-.tc{color:rgba(0,255,136,.3);}
-.tk{color:var(--cyan);}
-.tv{color:var(--orange);}
-.tp{color:var(--green);}
-.tn{color:var(--red);}
-.tdim{color:var(--muted);}
-.ai-blk{margin-top:14px;padding:12px 16px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:4px;font-size:11px;color:var(--purple2);line-height:1.8;}
-.ai-blk .albl{color:var(--purple);display:block;margin-bottom:6px;letter-spacing:.2em;font-size:9px;}
-.sorc-feats{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
-.sf{background:var(--bg);padding:20px 24px;display:flex;gap:14px;align-items:flex-start;transition:background .25s;}
-.sf:hover{background:rgba(0,255,136,.04);}
-.sf-icon{font-size:16px;flex-shrink:0;margin-top:2px;}
-.sf-title{font-family:var(--mono);font-size:10px;color:var(--text);letter-spacing:.1em;margin-bottom:3px;text-transform:uppercase;}
-.sf-desc{font-size:12px;color:var(--muted);line-height:1.65;font-weight:300;}
-
-/* TECH STACK */
-.stack-sec{padding:120px 48px;max-width:1280px;margin:0 auto;}
-.stk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:40px;}
-.si{background:var(--bg);padding:18px 20px;display:flex;align-items:center;gap:12px;border-left:2px solid transparent;transition:background .25s,border-color .25s;}
-.si:hover{background:rgba(124,58,237,.08);border-left-color:var(--si-accent,var(--purple));}
-.si-info{display:flex;flex-direction:column;gap:2px;}
-.sn{font-family:var(--mono);font-size:11px;color:var(--text);letter-spacing:.08em;}
-.sc2{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.06em;}
-
-/* SOCIAL */
-.soc-full{padding:160px 48px;text-align:center;position:relative;overflow:hidden;}
-.soc-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(124,58,237,.08) 0%,transparent 50%),radial-gradient(ellipse at 70% 50%,rgba(0,255,240,.05) 0%,transparent 50%);pointer-events:none;}
-.collab{font-family:var(--display);font-size:clamp(48px,8vw,100px);line-height:1;margin-bottom:40px;}
-.collab .and{color:var(--purple2);}
-.collab .cld{background:linear-gradient(90deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.slinks{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-.sl{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:4px;padding:14px 28px;text-decoration:none;font-family:var(--mono);font-size:13px;color:var(--text);letter-spacing:.1em;transition:all .25s;}
-.sl:hover{background:rgba(124,58,237,.1);border-color:var(--purple2);transform:translateY(-3px);box-shadow:0 10px 30px rgba(124,58,237,.2);}
-
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.fl{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;}
-.flinks{display:flex;gap:24px;}
-.flinks a{font-family:var(--mono);font-size:10px;color:var(--muted);text-decoration:none;letter-spacing:.1em;transition:color .2s;}
-.flinks a:hover{color:var(--cyan);}
-
-/* SCROLL REVEAL — single element */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-
-/* SCROLL REVEAL — staggered children */
-.stagger > *{opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .4s ease;}
-.stagger > *.vis{opacity:1;transform:translateY(0);}
-
-@media (max-width: 768px) {
-  nav { padding: 14px 20px; }
-  .sec { padding: 48px 24px; }
-  .sfull { padding: 0 24px; }
-  .stack-sec { padding: 80px 24px; }
-  .soc-full { padding: 100px 24px; }
-  .sec-sep { padding: 32px 0; }
-  footer { padding: 20px; }
-  .pipe-track { flex-direction: column; }
-  .pn { border-right: none; border-bottom: 1px solid var(--border); padding: 20px; display: flex; align-items: center; gap: 16px; text-align: left; }
-  .pn:last-child { border-bottom: none; }
-  .picon { font-size: 20px; margin-bottom: 0; flex-shrink: 0; }
-  .ptt { display: none; }
-  .feat-grid { grid-template-columns: 1fr 1fr; }
-  .nf-intro { grid-template-columns: 1fr; gap: 40px; }
-  .sorc-grid { grid-template-columns: 1fr; }
-  .stk-grid { grid-template-columns: repeat(2,1fr); }
-  .stat-grid { grid-template-columns: 1fr 1fr; }
-  .slinks { flex-direction: column; align-items: center; }
-  .sl { width: 100%; max-width: 280px; justify-content: center; }
-  .collab { font-size: clamp(48px,15vw,80px); }
-  .hero-eye { text-align: center; }
-  .slabel { justify-content: center; }
-  footer { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
-  .flinks { justify-content: center; }
-  .subscribe-form { flex-direction: column; }
-  .signal-input { width: 100%; border-radius: 2px; }
-  .subscribe-form .cta-btn { border-radius: 2px; width: 100%; justify-content: center; }
+  --purple2: #a78bfa;
+  --green: #22c55e;
+  --orange: #f97316;
+  --pink: #ec4899;
+  --muted: rgba(232,232,240,0.4);
+  --text: rgba(232,232,240,0.85);
 }
 
-/* PROJECT_03 — SIGNAL */
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;}
-.cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--bg);background:var(--cyan);border:none;padding:14px 28px;border-radius:2px;cursor:none;transition:background .2s,box-shadow .2s,transform .15s;font-weight:600;}
-.cta-btn:hover{background:#00ffe0;box-shadow:0 0 30px rgba(0,255,240,.35);transform:translateY(-2px);}
-.cta-sub{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;}
-.subscribe-form{display:flex;align-items:stretch;}
-.signal-input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-right:none;color:var(--text);font-family:var(--mono);font-size:13px;padding:14px 20px;border-radius:2px 0 0 2px;width:280px;outline:none;transition:border-color .2s;}
-.signal-input:focus{border-color:var(--cyan);}
-.subscribe-form .cta-btn{border-radius:0 2px 2px 0;}
-.signal-feed{border:1px solid var(--border);background:rgba(255,255,255,.02);border-radius:4px;overflow:hidden;}
-.sf-hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02);}
-.sf-hdr-left{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;}
-.sf-badge{font-family:var(--mono);font-size:9px;color:var(--cyan);border:1px solid rgba(0,255,240,.2);border-radius:2px;padding:2px 6px;letter-spacing:.1em;}
-.sf-body{padding:16px;display:flex;flex-direction:column;gap:12px;max-height:280px;overflow:hidden;}
-.trend-item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border:1px solid var(--border);border-radius:3px;background:rgba(255,255,255,.015);transition:background .2s,border-color .2s;cursor:default;}
-.trend-item:hover{background:rgba(124,58,237,.06);border-color:rgba(124,58,237,.3);}
-.trend-rank{font-family:var(--display);font-size:28px;color:rgba(74,74,106,.5);line-height:1;min-width:28px;}
-.trend-rank.hot{color:var(--cyan);text-shadow:0 0 12px rgba(0,255,240,.4);}
-.trend-info{flex:1;}
-.trend-topic{font-family:var(--mono);font-size:11px;color:var(--text);letter-spacing:.05em;margin-bottom:4px;}
-.trend-meta{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.05em;}
-.trend-score{font-family:var(--display);font-size:20px;color:var(--green);align-self:center;}
-.trend-score.warm{color:var(--orange);}
-.trend-score.cold{color:var(--muted);}
-.sub-track{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;}
-.sub-badge{font-family:var(--mono);font-size:10px;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:5px 12px;letter-spacing:.08em;transition:color .2s,border-color .2s,background .2s;cursor:default;}
-.sub-badge:hover{color:var(--cyan);border-color:rgba(0,255,240,.3);background:rgba(0,255,240,.05);}
+html { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+body { margin: 0; }
+
+/* ---- CURSOR ---- */
+#cursor { position:fixed; width:24px; height:24px; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); }
+#cursor::before { content:''; position:absolute; top:50%; left:0; width:8px; height:1px; background:var(--cyan); box-shadow:-16px 0 0 var(--cyan); transform:translateY(-50%); }
+#cursor::after  { content:''; position:absolute; left:50%; top:0; height:8px; width:1px; background:var(--cyan); box-shadow:0 -16px 0 var(--cyan); transform:translateX(-50%); }
+#cdot { position:fixed; width:3px; height:3px; background:var(--cyan); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); mix-blend-mode:screen; }
+
+/* ---- NAV ---- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 56px;
+  background: rgba(4,4,8,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-left { display: flex; align-items: center; gap: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: #fff; }
+.bolt { color: var(--purple2); font-size: 18px; animation: boltPulse 2s infinite; }
+@keyframes boltPulse { 0%,100%{text-shadow:0 0 8px var(--purple2)} 50%{text-shadow:0 0 20px var(--purple2), 0 0 40px var(--purple)} }
+.nav-right { display: flex; align-items: center; gap: 8px; font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--green); }
+.live-dot { width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green); animation: pulse 2s infinite; }
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 80px 80px;
+  position: relative; overflow: hidden;
+}
+.hgrid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(120,80,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,80,255,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hradial {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(124,58,237,0.14) 0%, transparent 70%);
+}
+.hero-eyebrow {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; letter-spacing: 4px; color: var(--purple2);
+  opacity: 0.7; margin-bottom: 24px;
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 14vw, 180px);
+  line-height: 0.88; letter-spacing: -2px;
+  margin-bottom: 36px; position: relative;
+}
+.grad { background: linear-gradient(135deg, var(--purple) 0%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub {
+  font-size: 18px; font-weight: 300; line-height: 1.65;
+  max-width: 580px; color: var(--text); margin-bottom: 32px;
+}
+.hero-sub strong { color: #fff; font-weight: 500; }
+.proof-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+.chip {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px;
+  padding: 6px 12px; border: 1px solid var(--border);
+  background: rgba(0,229,255,0.04); color: var(--cyan);
+}
+.chip.pc { border-color: rgba(167,139,250,0.2); color: var(--purple2); background: rgba(124,58,237,0.05); }
+.chip.oc { border-color: rgba(249,115,22,0.2); color: var(--orange); background: rgba(249,115,22,0.04); }
+.terminal-line { font-family: 'Share Tech Mono', monospace; font-size: 14px; color: var(--muted); }
+.terminal-line span { color: var(--cyan); }
+.cursor-blink { animation: blink 1s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.scroll-hint {
+  position: absolute; bottom: 40px; left: 80px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'Share Tech Mono', monospace; font-size: 10px;
+  letter-spacing: 3px; color: var(--muted); opacity: 0.5;
+}
+.scroll-line { width: 1px; height: 32px; background: linear-gradient(to bottom, var(--purple2), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+@keyframes scrollPulse { 0%,100%{transform:scaleY(1);opacity:0.5} 50%{transform:scaleY(1.4);opacity:1} }
+
+/* ---- SEC SEP ---- */
+.sec-sep { height: 0; padding: 64px 0; position: relative; }
+.sec-sep::before {
+  content: ''; position: absolute; left: 80px; right: 80px;
+  top: 50%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124,58,237,0.4) 20%, rgba(0,229,255,0.2) 50%, rgba(124,58,237,0.4) 80%, transparent);
+}
+.sec-sep::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(124,58,237,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ---- SECTION COMMONS ---- */
+.sfull { padding: 0 80px; }
+.slabel {
+  font-family: 'Share Tech Mono', monospace; font-size: 11px;
+  letter-spacing: 3px; color: var(--purple2); opacity: 0.6; margin-bottom: 16px;
+}
+.stitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 5vw, 64px); letter-spacing: 1px; line-height: 1;
+  color: #fff; margin-bottom: 16px;
+}
+.stitle .c { color: var(--cyan); }
+.stitle .g { color: var(--green); }
+.stitle .p { color: var(--purple2); }
+.sdesc { font-size: 16px; font-weight: 300; line-height: 1.7; color: var(--muted); max-width: 600px; margin-bottom: 48px; }
+
+/* ---- NICHEFLOW ---- */
+.nf-intro { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: start; margin-bottom: 40px; }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.stat-cell {
+  background: var(--surface); padding: 24px 20px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 110px; text-align: center; gap: 6px;
+}
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: var(--cyan); text-shadow: 0 0 20px rgba(0,229,255,0.4); line-height: 1; }
+.stat-lbl { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--muted); }
+.tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+.tag {
+  font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px;
+  padding: 4px 10px; border: 1px solid var(--border); color: var(--muted);
+  transition: color 0.2s, border-color 0.2s;
+}
+.tag:hover { color: var(--purple2); border-color: rgba(167,139,250,0.3); }
+
+/* ---- PIPELINE ---- */
+.pipe-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--muted); margin-bottom: 16px; }
+.pipe-track {
+  display: flex; align-items: stretch; gap: 0;
+  overflow-x: auto; padding-bottom: 4px;
+}
+.pn {
+  flex: 1; min-width: 110px;
+  background: rgba(0,0,0,0.3); border: 1px solid var(--border);
+  padding: 20px 12px 16px; text-align: center; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  position: relative;
+}
+.pn:hover { background: rgba(124,58,237,0.08); border-color: rgba(167,139,250,0.35); }
+.pn-step { position:absolute; top:7px; left:9px; font-family:'Share Tech Mono',monospace; font-size:9px; color:var(--purple2); opacity:0.5; letter-spacing:1px; }
+.pn-icon { font-size: 22px; margin-bottom: 8px; display: block; }
+.pn-name { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:2px; color:#fff; display:block; margin-bottom:4px; }
+.pn-sub { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; color:var(--muted); }
+.pn.c1 { border-top: 2px solid var(--cyan); }
+.pn.c2 { border-top: 2px solid var(--purple2); }
+.pn.c3 { border-top: 2px solid var(--green); }
+.pn.c4 { border-top: 2px solid var(--orange); }
+.pn.c5 { border-top: 2px solid var(--pink); }
+.pn.c6 { border-top: 2px solid var(--purple); }
+.pa { font-family:'Share Tech Mono',monospace; font-size:13px; color:rgba(124,58,237,0.35); padding:0 4px; flex-shrink:0; display:flex; align-items:center; }
+
+/* ---- FEATURES ---- */
+.feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 40px; }
+.fc {
+  background: var(--surface); padding: 28px 24px;
+  cursor: default; transition: background 0.2s; position: relative; overflow: hidden;
+}
+.fc::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--purple),var(--cyan)); opacity:0; transition:opacity 0.2s; }
+.fc:hover { background: rgba(124,58,237,0.06); }
+.fc:hover::after { opacity:1; }
+.fc-num { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--purple2); opacity:0.5; margin-bottom:12px; }
+.fc-icon { font-size:20px; margin-bottom:10px; display:block; }
+.fc-name { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:1px; color:#fff; margin-bottom:8px; }
+.fc-desc { font-size:13px; font-weight:300; line-height:1.6; color:var(--muted); }
+
+/* ---- TICKER ---- */
+.ticker-wrap { margin-top: 40px; }
+.ticker-term {
+  background: #050508; border: 1px solid var(--border); border-radius: 2px; overflow: hidden;
+}
+.ticker-bar {
+  background: rgba(124,58,237,0.12); padding: 8px 16px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.tbar-dots { display:flex; gap:5px; }
+.tbar-dot { width:8px; height:8px; border-radius:50%; }
+.tbar-title { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--muted); margin-left:8px; }
+.tlive { display:flex; align-items:center; gap:6px; margin-left:auto; font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:2px; color:var(--green); }
+.ticker-body { height: 180px; overflow-y:auto; overflow-x:hidden; padding:12px 0; scrollbar-width:none; }
+.ticker-body::-webkit-scrollbar { display:none; }
+.tlog { display:flex; gap:10px; align-items:baseline; padding:3px 16px; font-family:'Share Tech Mono',monospace; font-size:11px; }
+.ts { color:rgba(74,74,106,.55); font-size:10px; flex-shrink:0; }
+.lvl-info { color:#60a5fa; background:rgba(96,165,250,.08); border:1px solid rgba(96,165,250,.15); padding:1px 5px; font-size:9px; letter-spacing:1px; flex-shrink:0; }
+.lvl-warn { color:#fbbf24; background:rgba(251,191,36,.08); border:1px solid rgba(251,191,36,.15); padding:1px 5px; font-size:9px; letter-spacing:1px; flex-shrink:0; }
+.lvl-success { color:var(--green); background:rgba(34,197,94,.08); border:1px solid rgba(34,197,94,.15); padding:1px 5px; font-size:9px; letter-spacing:1px; flex-shrink:0; }
+.lvl-error { color:#f87171; background:rgba(248,113,113,.08); border:1px solid rgba(248,113,113,.15); padding:1px 5px; font-size:9px; letter-spacing:1px; flex-shrink:0; }
+.wrk { color:var(--purple2); flex-shrink:0; }
+.msg { color:rgba(232,232,240,.4); }
+
+/* ---- SRC BADGES ---- */
+.src-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:20px; }
+.src-badge { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:2px; padding:5px 10px; border:1px solid var(--border); color:var(--muted); }
+
+/* ---- SUPEROFFROAD ---- */
+.sorc-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
+.term {
+  background: #020205; border:1px solid var(--border); border-radius:2px; overflow:hidden;
+  font-family:'Share Tech Mono',monospace; font-size:12px;
+}
+.term-bar { background:rgba(124,58,237,0.1); padding:8px 16px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:5px; }
+.term-body { padding:20px; }
+.t-comment { color:rgba(74,74,106,.7); }
+.t-key { color:var(--cyan); }
+.t-val { color:var(--orange); }
+.t-green { color:var(--green); }
+.t-purple { color:var(--purple2); }
+.t-analysis { background:rgba(124,58,237,0.1); border:1px solid rgba(124,58,237,0.2); padding:14px; margin-top:16px; }
+.t-analysis-lbl { color:var(--purple2); font-size:10px; letter-spacing:2px; margin-bottom:8px; }
+.t-analysis-text { color:rgba(232,232,240,.6); font-size:11px; line-height:1.6; }
+.sorc-features { display:flex; flex-direction:column; gap:20px; }
+.sf { display:flex; gap:16px; align-items:flex-start; }
+.sf-icon { font-size:20px; flex-shrink:0; margin-top:2px; }
+.sf-name { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:1px; color:#fff; margin-bottom:4px; }
+.sf-desc { font-size:13px; font-weight:300; line-height:1.6; color:var(--muted); }
+.sorc-link { display:inline-flex; align-items:center; gap:8px; font-family:'Share Tech Mono',monospace; font-size:11px; letter-spacing:2px; color:var(--green); border:1px solid rgba(34,197,94,0.25); padding:10px 20px; text-decoration:none; margin-top:28px; transition:background 0.2s; }
+.sorc-link:hover { background:rgba(34,197,94,0.06); }
+
+/* ---- AI BUILDER SIGNAL ---- */
+.signal-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.signal-stack { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; }
+.signal-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:32px; }
+.ss { background:var(--surface); border:1px solid var(--border); padding:20px 16px; text-align:center; }
+.ss-num { font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--cyan); text-shadow:0 0 16px rgba(0,229,255,0.3); line-height:1; margin-bottom:4px; }
+.ss-lbl { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:2px; color:var(--muted); }
+.signal-features { display:flex; flex-direction:column; gap:16px; }
+.sigf { display:flex; gap:14px; align-items:flex-start; padding:16px; border:1px solid var(--border); background:var(--surface); }
+.sigf-icon { font-size:18px; flex-shrink:0; }
+.sigf-name { font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:1px; color:#fff; margin-bottom:4px; }
+.sigf-desc { font-size:12px; font-weight:300; line-height:1.5; color:var(--muted); }
+.signal-cta { display:inline-flex; align-items:center; gap:8px; font-family:'Share Tech Mono',monospace; font-size:11px; letter-spacing:2px; color:#000; background:var(--cyan); padding:12px 24px; text-decoration:none; margin-top:8px; transition:opacity 0.2s; font-weight:500; }
+.signal-cta:hover { opacity:0.85; }
+.subreddits { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px; }
+.sr { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:1px; padding:4px 8px; border:1px solid var(--border); color:var(--muted); }
+
+/* ---- STACK ---- */
+.stack-sec { padding:120px 80px; }
+.stk-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+.stk-item {
+  background:var(--surface); padding:18px 16px;
+  display:flex; flex-direction:column; gap:4px;
+  border-left:2px solid transparent; transition:border-color 0.2s, background 0.2s;
+}
+.stk-item:hover { background:rgba(124,58,237,0.05); }
+.stk-item.sc:hover { border-left-color:var(--cyan); }
+.stk-item.sp:hover { border-left-color:var(--purple2); }
+.stk-item.sg:hover { border-left-color:var(--green); }
+.stk-item.so:hover { border-left-color:var(--orange); }
+.stk-item.sm:hover { border-left-color:rgba(232,232,240,0.2); }
+.stk-name { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:1px; color:#fff; }
+.stk-cat { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:2px; color:var(--muted); }
+
+/* ---- SOCIAL CTA ---- */
+.soc-full { padding:160px 80px; text-align:center; position:relative; overflow:hidden; }
+.soc-full::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 70% at 50% 100%, rgba(124,58,237,0.1) 0%, transparent 70%); pointer-events:none; }
+.soc-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,8vw,100px); line-height:0.9; letter-spacing:-1px; color:#fff; margin-bottom:24px; }
+.soc-sub { font-size:16px; font-weight:300; line-height:1.7; color:var(--muted); max-width:440px; margin:0 auto 36px; }
+.email-row { display:flex; gap:0; max-width:420px; margin:0 auto 16px; }
+.email-input { flex:1; background:rgba(0,0,0,0.4); border:1px solid rgba(124,58,237,0.3); border-right:none; padding:13px 16px; font-family:'Share Tech Mono',monospace; font-size:13px; color:#fff; outline:none; }
+.email-input::placeholder { color:rgba(232,232,240,.25); }
+.email-input:focus { border-color:rgba(124,58,237,0.6); }
+.email-btn { background:var(--purple); border:1px solid rgba(124,58,237,.5); padding:13px 22px; font-family:'Share Tech Mono',monospace; font-size:11px; letter-spacing:2px; color:#fff; cursor:pointer; white-space:nowrap; transition:background 0.2s; }
+.email-btn:hover { background:#6d28d9; }
+.email-note { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1px; color:rgba(232,232,240,.2); margin-bottom:36px; }
+.social-row { display:flex; gap:12px; justify-content:center; }
+.sl { display:inline-flex; align-items:center; gap:8px; font-family:'Share Tech Mono',monospace; font-size:11px; letter-spacing:2px; color:var(--muted); text-decoration:none; border:1px solid var(--border); padding:10px 20px; transition:color 0.2s, border-color 0.2s; }
+.sl:hover { color:#fff; border-color:rgba(167,139,250,.4); }
+
+/* ---- FOOTER ---- */
+footer { padding:24px 80px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.foot-left { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--muted); opacity:0.5; }
+.foot-right { display:flex; gap:20px; }
+.foot-right a { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--muted); opacity:0.5; text-decoration:none; }
+.foot-right a:hover { opacity:1; }
+
+/* ---- ANIMATIONS ---- */
+@keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 6px var(--green)} 50%{opacity:.6;box-shadow:0 0 14px var(--green)} }
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity:1; transform:none; }
+.stagger > * { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
+.stagger > *.vis { opacity:1; transform:none; }
+
+/* ---- STATUS BADGES ---- */
+.status-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1.5px;
+  padding:3px 9px; border-radius:2px; margin-bottom:4px;
+}
+.sb-live { background:rgba(34,197,94,0.1); color:var(--green); border:1px solid rgba(34,197,94,0.25); }
+.sb-live .sdot { width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s infinite; flex-shrink:0; }
+.sb-beta { background:rgba(249,115,22,0.1); color:var(--orange); border:1px solid rgba(249,115,22,0.25); }
+.sb-beta .sdot { width:5px;height:5px;border-radius:50%;background:var(--orange);box-shadow:0 0 6px var(--orange);flex-shrink:0; }
+
+/* ---- SUBSCRIBE MSG ---- */
+.sub-msg { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:1px; margin-top:10px; min-height:16px; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width:900px) {
+  .sfull, .stack-sec, .soc-full, footer { padding-left:32px; padding-right:32px; }
+  .hero { padding:100px 32px 60px; }
+  .sec-sep::before { left:32px; right:32px; }
+  .nf-intro { grid-template-columns:1fr; }
+  .sorc-grid, .signal-grid { grid-template-columns:1fr; }
+  .stk-grid { grid-template-columns:repeat(2,1fr); }
+  .signal-stats { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:600px) {
+  .feat-grid { grid-template-columns:1fr 1fr; }
+  .stk-grid { grid-template-columns:1fr 1fr; }
+}
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-dot" id="cdot"></div>
+<div id="cursor"></div>
+<div id="cdot"></div>
 
+<!-- NAV -->
 <nav>
   <div class="nav-left">
-    <div class="nav-bolt"></div>
-    <span class="nav-brand">BUILT BY CLAUDE</span>
+    <span class="bolt">⚡</span>
+    BUILT BY CLAUDE
   </div>
-  <div class="nav-status">
-    <div class="sdot"></div>
+  <div class="nav-right">
+    <div class="live-dot"></div>
     SYSTEMS ONLINE
   </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
+<section class="hero">
   <div class="hgrid"></div>
   <div class="hradial"></div>
-  <div class="hero-eye"><span>// </span>AUTONOMOUS AI SYSTEMS<span> // </span>EST. 2026</div>
+  <div class="hero-eyebrow">// AUTONOMOUS AI SYSTEMS // EST. 2026</div>
   <div class="hero-title">
-    <span class="glitch" data-text="BRIAN">BRIAN</span>
-    <span class="hplus">+</span>
-    <span class="line2 glitch" data-text="CLAUDE">CLAUDE</span>
+    BRIAN<br>+<br><span class="grad">CLAUDE</span>
   </div>
-  <p class="hero-sub">A human and an AI <span class="hl">going fucking nuts</span> — building fully automated pipelines, intelligent tools, and niche products from scratch. No team. No funding. Just code and tokens.</p>
-  <div class="tline">
-    <span class="prompt">$</span>
-    <span>npm run build --everything --ship-it</span>
-    <span class="cblink"></span>
+  <p class="hero-sub">
+    <strong>Niche AI-powered tools that run themselves.</strong><br>
+    One human, one AI, no team, no funding — just code and tokens.
+  </p>
+  <div class="proof-chips">
+    <div class="chip pc">BUILDING IN PUBLIC</div>
+    <div class="chip oc">100% AI-ASSISTED CODE</div>
   </div>
+  <div class="terminal-line">$ <span>npm run build --everything --no-sleep</span> <span class="cursor-blink">█</span></div>
   <div class="scroll-hint">
-    <span>scroll</span>
     <div class="scroll-line"></div>
+    scroll
   </div>
-</div>
+</section>
 
+<!-- ============ NICHEFLOW ============ -->
 <div class="sec-sep"></div>
-
-<!-- NICHEFLOW -->
-<div class="sfull" style="background:linear-gradient(180deg,rgba(124,58,237,.03) 0%,transparent 60%);">
-<div class="sec">
-  <div class="reveal">
-    <div class="slabel">PROJECT_01 // NICHEFLOW V2</div>
-    <h2 class="stitle">FULLY AUTOMATED<br><span style="color:var(--purple2);">CONTENT FACTORY</span></h2>
-    <p class="sdesc">End-to-end AI video pipeline. Scrapes public domain footage, writes scripts with Claude, synthesizes voice, renders captions, and posts to TikTok + YouTube. 24/7. Zero manual work after setup.</p>
-  </div>
-
-  <div class="nf-intro reveal" style="margin-top:56px;">
+<section class="sfull">
+  <div class="slabel reveal">PROJECT_01 // NICHEFLOW V2</div>
+  <div class="nf-intro reveal">
+    <div>
+      <div class="stitle">FULLY AUTOMATED<br><span class="c">CONTENT FACTORY</span></div>
+      <p class="sdesc">End-to-end AI video pipeline. Scrapes public domain footage, writes scripts with Claude, synthesizes voice, renders captions, and posts to TikTok + YouTube. 24/7. Zero manual work after setup.</p>
+      <div class="tech-tags stagger">
+        <div class="tag">Next.js</div><div class="tag">Node.js</div><div class="tag">Supabase</div>
+        <div class="tag">FFmpeg</div><div class="tag">Claude AI</div><div class="tag">edge-tts</div>
+        <div class="tag">PM2</div><div class="tag">Vercel</div><div class="tag">PostgreSQL</div><div class="tag">ChromaDB</div>
+      </div>
+    </div>
     <div class="stat-grid">
       <div class="stat-cell"><div class="stat-num">7</div><div class="stat-lbl">PM2 Workers</div></div>
       <div class="stat-cell"><div class="stat-num">4</div><div class="stat-lbl">Video Sources</div></div>
-      <div class="stat-cell"><div class="stat-num" style="font-size:52px;font-family:Arial,sans-serif;">&#8734;</div><div class="stat-lbl">Niches</div></div>
+      <div class="stat-cell"><div class="stat-num" style="font-size:48px;font-family:Arial,sans-serif">∞</div><div class="stat-lbl">Niches</div></div>
       <div class="stat-cell"><div class="stat-num">24/7</div><div class="stat-lbl">Automated</div></div>
     </div>
-    <div>
-      <div style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.15em;margin-bottom:14px;text-transform:uppercase;">// Tech Stack</div>
-      <div>
-        <span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">Supabase</span><span class="tag">FFmpeg</span><span class="tag">Claude AI</span><span class="tag">edge-tts</span><span class="tag">PM2</span><span class="tag">Vercel</span><span class="tag">PostgreSQL</span><span class="tag">ChromaDB</span>
-      </div>
-    </div>
   </div>
 
-  <!-- PIPELINE -->
-  <div class="pipe-wrap reveal">
-    <div class="pipe-hdr">// pipeline — hover each node for details</div>
-    <div class="pipe-track stagger">
-      <div class="pn sc">
-        <div class="ptt"><div class="tt-n">// SCRAPER</div><div class="tt-d">Searches Archive.org, C-SPAN, Wikimedia Commons, and NASA. Script-targeted queries — searches actual topic keywords, not just the niche name. Scores clips by quality + relevance via AI.</div><div class="tta"></div></div>
-        <span class="picon">🌐</span><div class="pname">SCRAPER</div><div class="ptech">4 sources</div>
-      </div>
-      <div class="pn sg">
-        <div class="ptt"><div class="tt-n">// SCRIPTGEN</div><div class="tt-d">Claude writes scripts in two modes: Topic-First (invents headlines then hunts clips) or Clip-First (reads available footage and writes around it). Learns from your rejections per niche or globally.</div><div class="tta"></div></div>
-        <span class="picon">✍️</span><div class="pname">SCRIPTGEN</div><div class="ptech">Claude AI</div>
-      </div>
-      <div class="pn vg">
-        <div class="ptt"><div class="tt-n">// VOICEGEN</div><div class="tt-d">Converts scripts to natural voiceovers via edge-tts. Generates word-level timestamps for frame-perfect caption sync. Multiple voice options configurable per niche.</div><div class="tta"></div></div>
-        <span class="picon">🎙️</span><div class="pname">VOICEGEN</div><div class="ptech">edge-tts</div>
-      </div>
-      <div class="pn rn">
-        <div class="ptt"><div class="tt-n">// RENDERER</div><div class="tt-d">FFmpeg assembles everything. Clips loop to fill exact audio duration. Word-level captions burn at frame-perfect timing. Background music mixed in. yuv420p output for universal browser support.</div><div class="tta"></div></div>
-        <span class="picon">🎬</span><div class="pname">RENDERER</div><div class="ptech">FFmpeg</div>
-      </div>
-      <div class="pn rv">
-        <div class="ptt"><div class="tt-n">// REVIEW QUEUE</div><div class="tt-d">Human-in-the-loop quality gate. Approve or reject each video. Type a rejection reason and ScriptGen avoids those patterns on the next run. Fully skippable for hands-off mode.</div><div class="tta"></div></div>
-        <span class="picon">👁️</span><div class="pname">REVIEW</div><div class="ptech">your call</div>
-      </div>
-      <div class="pn ps">
-        <div class="ptt"><div class="tt-n">// POSTER</div><div class="tt-d">Posts approved videos to TikTok and YouTube via OAuth. AI-generated titles, descriptions, and hashtags optimized per platform. Fully automatic once OAuth tokens are configured.</div><div class="tta"></div></div>
-        <span class="picon">📱</span><div class="pname">POSTER</div><div class="ptech">TikTok · YT</div>
-      </div>
-    </div>
+  <div class="pipe-label">// pipeline — hover each node for details</div>
+  <div class="pipe-track">
+    <div class="pn c1"><span class="pn-step">01</span><span class="pn-icon">🌐</span><span class="pn-name">SCRAPER</span><span class="pn-sub">4 sources</span></div>
+    <div class="pa">—▶</div>
+    <div class="pn c2"><span class="pn-step">02</span><span class="pn-icon">✍️</span><span class="pn-name">SCRIPTGEN</span><span class="pn-sub">Claude AI</span></div>
+    <div class="pa">—▶</div>
+    <div class="pn c3"><span class="pn-step">03</span><span class="pn-icon">🎙️</span><span class="pn-name">VOICEGEN</span><span class="pn-sub">edge-tts</span></div>
+    <div class="pa">—▶</div>
+    <div class="pn c4"><span class="pn-step">04</span><span class="pn-icon">🎬</span><span class="pn-name">RENDERER</span><span class="pn-sub">FFmpeg</span></div>
+    <div class="pa">—▶</div>
+    <div class="pn c5"><span class="pn-step">05</span><span class="pn-icon">👁️</span><span class="pn-name">REVIEW</span><span class="pn-sub">your call</span></div>
+    <div class="pa">—▶</div>
+    <div class="pn c6"><span class="pn-step">06</span><span class="pn-icon">📱</span><span class="pn-name">POSTER</span><span class="pn-sub">TikTok · YT</span></div>
   </div>
 
-  <!-- FEATURES -->
-  <div class="reveal">
-    <div style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px;">// Features</div>
-    <div class="feat-grid stagger">
-      <div class="fc"><div class="fc-num">01</div><span class="fc-icon">🧠</span><div class="fc-title">CLIP-FIRST MODE</div><p class="fc-desc">Toggle any niche to read available footage first, then write scripts around what actually exists. No more mismatched clips and irrelevant B-roll.</p></div>
-      <div class="fc"><div class="fc-num">02</div><span class="fc-icon">🔁</span><div class="fc-title">REJECTION LEARNING</div><p class="fc-desc">Every reject teaches the AI. Add a note when you reject and ScriptGen avoids those patterns — per niche or globally across all content.</p></div>
-      <div class="fc"><div class="fc-num">03</div><span class="fc-icon">🎚️</span><div class="fc-title">PER-NICHE CONTROLS</div><p class="fc-desc">Each niche has independent tone (investigative, casual, urgent), script mode, and style notes. Full control via dashboard — no code required.</p></div>
-      <div class="fc"><div class="fc-num">04</div><span class="fc-icon">♾️</span><div class="fc-title">UNLIMITED NICHES</div><p class="fc-desc">Politics, Cats, Space, Finance, True Crime. Each niche runs its own fully independent pipeline simultaneously. Add one in seconds.</p></div>
-      <div class="fc"><div class="fc-num">05</div><span class="fc-icon">⚡</span><div class="fc-title">WORD-LEVEL CAPTIONS</div><p class="fc-desc">Each word highlights as it's spoken — frame-perfect timing from edge-tts word timestamps. Optimized for mobile-first vertical viewing.</p></div>
-      <div class="fc"><div class="fc-num">06</div><span class="fc-icon">🛡️</span><div class="fc-title">100% PUBLIC DOMAIN</div><p class="fc-desc">Archive.org, Wikimedia Commons, C-SPAN, NASA. All explicitly licensed for reuse. Zero copyright risk in every video produced.</p></div>
-    </div>
+  <div class="feat-grid stagger">
+    <div class="fc"><div class="fc-num">01</div><span class="fc-icon">🧠</span><div class="fc-name">CLIP-FIRST MODE</div><p class="fc-desc">Toggle any niche to read available footage first, then write scripts around what actually exists.</p></div>
+    <div class="fc"><div class="fc-num">02</div><span class="fc-icon">🔁</span><div class="fc-name">REJECTION LEARNING</div><p class="fc-desc">Every reject teaches the AI. Add a note and ScriptGen avoids those patterns — per niche or globally.</p></div>
+    <div class="fc"><div class="fc-num">03</div><span class="fc-icon">🎚️</span><div class="fc-name">PER-NICHE CONTROLS</div><p class="fc-desc">Independent tone, script mode, and style notes per niche. Full control via dashboard — no code required.</p></div>
+    <div class="fc"><div class="fc-num">04</div><span class="fc-icon">♾️</span><div class="fc-name">UNLIMITED NICHES</div><p class="fc-desc">Politics, Cats, Space, Finance, True Crime. Each niche runs its own fully independent pipeline simultaneously.</p></div>
+    <div class="fc"><div class="fc-num">05</div><span class="fc-icon">⚡</span><div class="fc-name">WORD-LEVEL CAPTIONS</div><p class="fc-desc">Each word highlights as it's spoken — frame-perfect timing from edge-tts word timestamps.</p></div>
+    <div class="fc"><div class="fc-num">06</div><span class="fc-icon">🛡️</span><div class="fc-name">100% PUBLIC DOMAIN</div><p class="fc-desc">Archive.org, Wikimedia Commons, C-SPAN, NASA. Zero copyright risk in every video produced.</p></div>
   </div>
 
-  <div class="reveal" style="margin-top:40px;">
-    <div style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;">// Active Video Sources</div>
-    <div class="src-row stagger">
-      <div class="src"><div class="d"></div>ARCHIVE.ORG</div>
-      <div class="src"><div class="d"></div>C-SPAN / IA</div>
-      <div class="src"><div class="d"></div>WIKIMEDIA COMMONS</div>
-      <div class="src"><div class="d"></div>NASA IMAGE GALLERY</div>
-    </div>
-  </div>
-
-  <!-- LIVE TERMINAL TICKER -->
   <div class="ticker-wrap reveal">
-    <div class="ticker-hdr">system live — nicheflow running now</div>
     <div class="ticker-term">
       <div class="ticker-bar">
-        <div class="tdots"><div class="td tdr"></div><div class="td tdy"></div><div class="td tdg"></div></div>
-        <span class="ticker-title">nicheflow@vps — pm2 logs --all --raw</span>
-        <div class="live-badge"><div class="live-pulse"></div>LIVE</div>
+        <div class="tbar-dots">
+          <div class="tbar-dot" style="background:#ff5f57"></div>
+          <div class="tbar-dot" style="background:#ffbd2e"></div>
+          <div class="tbar-dot" style="background:#28c840"></div>
+        </div>
+        <span class="tbar-title">nicheflow@vps — pm2 logs --all --raw</span>
+        <div class="tlive"><div class="live-dot" style="width:5px;height:5px"></div>LIVE</div>
       </div>
       <div class="ticker-body" id="ticker"></div>
     </div>
   </div>
 
-</div>
-</div>
-
-<div class="sec-sep" style="padding:92px 0;"></div>
-
-<!-- SUPEROFFROAD RC -->
-<div class="sfull">
-<div class="sec">
-  <div class="reveal">
-    <div class="slabel">PROJECT_02 // SUPEROFFROADRC.COM</div>
-    <h2 class="stitle">AI SETUP<br><span style="color:var(--green);">NOTEBOOK</span></h2>
-    <p class="sdesc">Intelligent setup assistant for Yokomo SO 2.0 and SO 3.0 racers. Track every change, compare runs, and let AI tell you exactly what made you faster.</p>
+  <div class="src-row">
+    <div class="src-badge">ARCHIVE.ORG</div>
+    <div class="src-badge">C-SPAN / IA</div>
+    <div class="src-badge">WIKIMEDIA COMMONS</div>
+    <div class="src-badge">NASA IMAGE GALLERY</div>
   </div>
+</section>
 
-  <div class="sorc-grid reveal" style="margin-top:56px;">
-    <div class="term">
+<!-- ============ SUPEROFFROAD ============ -->
+<div class="sec-sep" style="padding:92px 0;"></div>
+<section class="sfull">
+  <div class="slabel reveal">PROJECT_02 // SUPEROFFROADRC.COM</div>
+  <div class="stitle reveal">AI SETUP <span class="g">NOTEBOOK</span></div>
+  <p class="sdesc reveal">Intelligent setup assistant for Yokomo SO 2.0 and SO 3.0 racers. Track every change, compare runs, and let AI tell you exactly what made you faster.</p>
+
+  <div class="sorc-grid">
+    <div class="term reveal">
       <div class="term-bar">
-        <div class="tdots"><div class="td tdr"></div><div class="td tdy"></div><div class="td tdg"></div></div>
-        <span class="ttitle">setup_diff_race_night.json</span>
+        <div class="tbar-dots">
+          <div class="tbar-dot" style="background:#ff5f57"></div>
+          <div class="tbar-dot" style="background:#ffbd2e"></div>
+          <div class="tbar-dot" style="background:#28c840"></div>
+        </div>
+        <span class="tbar-title" style="margin-left:8px">setup_diff_race_night.json</span>
       </div>
-      <div class="tbody">
-        <div class="tc">// run #47 — indoor hard pack</div>
+      <div class="term-body">
+        <div class="t-comment">// run #47 — indoor hard pack</div>
         <br>
-        <div><span class="tk">front_shock_oil</span><span class="tdim">: </span><span class="tv">32.5wt</span></div>
-        <div><span class="tk">rear_shock_oil</span><span class="tdim">: </span><span class="tv">30wt</span></div>
-        <div><span class="tk">front_spring</span><span class="tdim">: </span><span class="tv">Yokomo Green</span></div>
-        <div><span class="tk">rear_spring</span><span class="tdim">: </span><span class="tv">Yokomo Orange</span></div>
-        <div><span class="tk">pinion</span><span class="tdim">: </span><span class="tv">22T</span></div>
-        <div><span class="tk">spur</span><span class="tdim">: </span><span class="tv">80T</span></div>
+        <div><span class="t-key">front_shock_oil</span>: <span class="t-val">32.5wt</span></div>
+        <div><span class="t-key">rear_shock_oil</span>: <span class="t-val">30wt</span></div>
+        <div><span class="t-key">front_spring</span>: <span class="t-val">Yokomo Green</span></div>
+        <div><span class="t-key">rear_spring</span>: <span class="t-val">Yokomo Orange</span></div>
+        <div><span class="t-key">pinion</span>: <span class="t-val">22T</span></div>
+        <div><span class="t-key">spur</span>: <span class="t-val">80T</span></div>
         <br>
-        <div class="tc">// diff vs run #46</div>
-        <div><span class="tp">+ front_spring Yokomo Pink → Yokomo Green</span></div>
-        <div><span class="tp">+ rear_spring Yokomo Red → Yokomo Orange</span></div>
-        <div><span class="tp">+ pinion 20T → 22T</span></div>
-        <br>
-        <div class="ai-blk">
-          <span class="albl">// AI ANALYSIS</span>
-          Stiffer front spring (Yokomo Green) with slightly softer rear (Yokomo Orange) should improve steering response without sacrificing rear traction. Dropping front oil to 32.5wt will speed up rebound — good for hard pack. Gearing up 2T should improve mid-straight speed, watch motor temps.
+        <div class="t-comment">// diff vs run #46</div>
+        <div class="t-green">+ front_spring Yokomo Pink → Yokomo Green</div>
+        <div class="t-green">+ rear_spring Yokomo Red → Yokomo Orange</div>
+        <div class="t-green">+ pinion 20T → 22T</div>
+        <div class="t-analysis">
+          <div class="t-analysis-lbl">// AI ANALYSIS</div>
+          <div class="t-analysis-text">Stiffer front spring with slightly softer rear should improve steering response without sacrificing rear traction. Dropping front oil to 32.5wt will speed up rebound — good for hard pack. Gearing up 2T should improve mid-straight speed, watch motor temps.</div>
         </div>
       </div>
     </div>
 
-    <div>
-      <div class="sorc-feats">
-        <div class="sf"><div class="sf-icon">📸</div><div><div class="sf-title">SETUP SNAPSHOTS</div><div class="sf-desc">Log every setting before each run. Auto-generates a full diff showing exactly what changed between sessions.</div></div></div>
-        <div class="sf"><div class="sf-icon">🔬</div><div><div class="sf-title">RUN COMPARISON</div><div class="sf-desc">Compare any two runs side by side. AI identifies which specific changes correlated with lap time improvements.</div></div></div>
-        <div class="sf"><div class="sf-icon">🧠</div><div><div class="sf-title">1,582-CHUNK KNOWLEDGE BASE</div><div class="sf-desc">YouTube transcripts from top RC channels + official Yokomo manuals. ChromaDB semantic search across all of it.</div></div></div>
-        <div class="sf"><div class="sf-icon">⚙️</div><div><div class="sf-title">SO 2.0 + SO 3.0 SPECIFIC</div><div class="sf-desc">Gearing calculators with precise motor specs, setup templates, and indoor hard pack tuning guides.</div></div></div>
-        <div class="sf"><div class="sf-icon">💰</div><div><div class="sf-title">FREEMIUM MODEL</div><div class="sf-desc">Free setup logging for all racers. AI-powered insights and advanced trend analysis behind a paid subscription.</div></div></div>
-        <div style="padding:16px 24px;background:var(--bg);">
-          <a href="https://superoffroadrc.com" target="_blank" class="sl" style="display:inline-flex;font-size:11px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-            SUPEROFFROADRC.COM
-          </a>
-        </div>
-      </div>
+    <div class="sorc-features reveal">
+      <div class="sf"><span class="sf-icon">📸</span><div><div class="sf-name">SETUP SNAPSHOTS</div><p class="sf-desc">Log every setting before each run. Auto-generates a full diff showing exactly what changed between sessions.</p></div></div>
+      <div class="sf"><span class="sf-icon">🔬</span><div><div class="sf-name">RUN COMPARISON</div><p class="sf-desc">Compare any two runs side by side. AI identifies which specific changes correlated with lap time improvements.</p></div></div>
+      <div class="sf"><span class="sf-icon">🧠</span><div><div class="sf-name">1,582-CHUNK KNOWLEDGE BASE</div><p class="sf-desc">YouTube transcripts from top RC channels + official Yokomo manuals. ChromaDB semantic search across all of it.</p></div></div>
+      <div class="sf"><span class="sf-icon">⚙️</span><div><div class="sf-name">SO 2.0 + SO 3.0 SPECIFIC</div><p class="sf-desc">Gearing calculators with precise motor specs, setup templates, and indoor hard pack tuning guides.</p></div></div>
+      <div class="sf"><span class="sf-icon">💰</span><div><div class="sf-name">FREEMIUM MODEL</div><p class="sf-desc">Free setup logging for all racers. AI-powered insights and advanced trend analysis behind a paid subscription.</p></div></div>
+      <a href="https://superoffroadrc.com" target="_blank" class="sorc-link">SUPEROFFROADRC.COM →</a>
     </div>
   </div>
-</div>
-</div>
+</section>
 
+<!-- ============ AI BUILDER SIGNAL ============ -->
 <div class="sec-sep" style="padding:92px 0;"></div>
-
-<!-- AI BUILDER SIGNAL -->
-<div class="sfull">
-<div class="sec">
-
+<section class="sfull">
   <div class="slabel reveal">PROJECT_03 // AI BUILDER SIGNAL</div>
-  <h2 class="stitle reveal">WEEKLY REDDIT<br><span style="color:var(--cyan)">INTELLIGENCE</span> / <span style="color:var(--purple2)">DIGEST</span></h2>
-  <p class="sdesc reveal" style="margin-bottom:24px;">We scrape the AI builder subreddits so you don't have to. Every week: trending topics, emerging pain points, product gaps, and one prompt worth stealing. Free. Automated. Straight to your inbox.</p>
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+    <div class="stitle reveal" style="margin-bottom:0">WEEKLY REDDIT <span class="p">INTELLIGENCE</span></div>
+    <div class="status-badge sb-live reveal"><span class="sdot"></span>LIVE · SENDING WEEKLY</div>
+  </div>
+  <p class="sdesc reveal">We scrape the AI builder subreddits so you don't have to. Every week: trending topics, emerging pain points, product gaps, and one prompt worth stealing. Free. Automated. Straight to your inbox.</p>
 
-  <div class="tags stagger">
-    <span class="tag">Reddit API</span>
-    <span class="tag">Node.js</span>
-    <span class="tag">Supabase</span>
-    <span class="tag">Groq / Llama 3</span>
-    <span class="tag">Resend</span>
-    <span class="tag">PM2</span>
-    <span class="tag">Vercel</span>
-    <span class="tag">PostgreSQL</span>
+  <div class="signal-stats stagger">
+    <div class="ss"><div class="ss-num">25</div><div class="ss-lbl">Subreddits</div></div>
+    <div class="ss"><div class="ss-num">3K+</div><div class="ss-lbl">Posts / Week</div></div>
+    <div class="ss"><div class="ss-num">1</div><div class="ss-lbl">Digest / Week</div></div>
+    <div class="ss"><div class="ss-num" style="color:var(--green)">FREE</div><div class="ss-lbl">Forever</div></div>
   </div>
 
-  <div class="cta-row reveal" style="margin-top:32px;margin-bottom:48px;">
-    <div class="subscribe-form" style="display:inline-flex;">
-      <input type="email" id="signalEmail" placeholder="your@email.com" class="signal-input" />
-      <button onclick="subscribeSignal()" class="cta-btn">GET THE SIGNAL →</button>
+  <div class="signal-grid">
+    <div class="signal-features stagger">
+      <div class="sigf"><span class="sigf-icon">🔥</span><div><div class="sigf-name">TRENDING TOPICS</div><p class="sigf-desc">The conversations gaining traction before they peak on Twitter. Early signal for builders, not lagging indicators.</p></div></div>
+      <div class="sigf"><span class="sigf-icon">😤</span><div><div class="sigf-name">PAIN POINT OF THE WEEK</div><p class="sigf-desc">Most upvoted frustration from the AI community. Pure product research, handed to you every Sunday.</p></div></div>
+      <div class="sigf"><span class="sigf-icon">💡</span><div><div class="sigf-name">OPPORTUNITY SPOTLIGHT</div><p class="sigf-desc">A recurring question with no good answer yet. A gap nobody's filled. We surface it so you can build it.</p></div></div>
+      <div class="sigf"><span class="sigf-icon">⚡</span><div><div class="sigf-name">ONE PROMPT WORTH STEALING</div><p class="sigf-desc">A Claude Code workflow or prompt pulled from top posts. Copy-pasteable. Immediately useful.</p></div></div>
     </div>
-    <span id="signalMsg" class="cta-sub"></span>
-  </div>
-
-  <div class="nf-intro reveal" style="margin-top:0;align-items:flex-start;margin-bottom:32px;">
-
-    <div style="display:flex;flex-direction:column;">
-      <div class="stat-grid stagger" style="flex:1;">
-        <div class="stat-cell"><div class="stat-num">25</div><div class="stat-lbl">Subreddits</div></div>
-        <div class="stat-cell"><div class="stat-num">3K+</div><div class="stat-lbl">Posts / Week</div></div>
-        <div class="stat-cell"><div class="stat-num">1</div><div class="stat-lbl">Digest / Week</div></div>
-        <div class="stat-cell"><div class="stat-num" style="color:var(--green);text-shadow:0 0 20px rgba(0,255,136,.4)">FREE</div><div class="stat-lbl">Forever</div></div>
+    <div class="reveal">
+      <div class="subreddits">
+        <div class="sr">r/ClaudeAI</div><div class="sr">r/LocalLLaMA</div><div class="sr">r/ChatGPT</div>
+        <div class="sr">r/SideProject</div><div class="sr">r/MachineLearning</div><div class="sr">r/OpenAI</div>
+        <div class="sr">r/AI_Agents</div><div class="sr">r/artificial</div><div class="sr">+ 17 more</div>
       </div>
-      <div class="sub-track stagger" style="margin-top:32px;margin-bottom:48px;">
-        <span class="sub-badge">r/ClaudeAI</span>
-        <span class="sub-badge">r/LocalLLaMA</span>
-        <span class="sub-badge">r/ChatGPT</span>
-        <span class="sub-badge">r/SideProject</span>
-        <span class="sub-badge">r/MachineLearning</span>
-        <span class="sub-badge">r/OpenAI</span>
-        <span class="sub-badge">r/AI_Agents</span>
-        <span class="sub-badge">r/artificial</span>
+      <div class="email-row" style="margin-top:8px;max-width:100%">
+        <input class="email-input" type="email" id="signalEmail" placeholder="your@email.com">
+        <button class="email-btn" onclick="subscribeSignal('signalEmail','signalMsg')">GET THE SIGNAL →</button>
       </div>
+      <div class="email-note" style="text-align:left;margin-top:10px">// FREE · ONE DIGEST PER WEEK · UNSUBSCRIBE ANYTIME</div>
+      <div id="signalMsg" class="sub-msg"></div>
     </div>
-
-    <div class="signal-feed" style="overflow:hidden;">
-      <div class="sf-hdr">
-        <div class="sf-hdr-left">
-          <div class="live-pulse"></div>
-          THIS WEEK'S SIGNAL
-        </div>
-        <span class="sf-badge">LIVE TRENDS</span>
-      </div>
-      <div class="sf-body">
-        <div class="trend-item">
-          <div class="trend-rank hot">01</div>
-          <div class="trend-info">
-            <div class="trend-topic">CLAUDE CODE CONTEXT WINDOW LIMITS</div>
-            <div class="trend-meta">r/ClaudeAI · 847 posts · ↑ 312% this week</div>
-          </div>
-          <div class="trend-score">🔥</div>
-        </div>
-        <div class="trend-item">
-          <div class="trend-rank hot">02</div>
-          <div class="trend-info">
-            <div class="trend-topic">LOCAL MODEL VS API COST COMPARISON</div>
-            <div class="trend-meta">r/LocalLLaMA · 634 posts · ↑ 189% this week</div>
-          </div>
-          <div class="trend-score">🔥</div>
-        </div>
-        <div class="trend-item">
-          <div class="trend-rank" style="color:var(--orange)">03</div>
-          <div class="trend-info">
-            <div class="trend-topic">AUTOMATED CONTENT PIPELINES</div>
-            <div class="trend-meta">r/SideProject · 412 posts · ↑ 97% this week</div>
-          </div>
-          <div class="trend-score warm">📈</div>
-        </div>
-        <div class="trend-item">
-          <div class="trend-rank">04</div>
-          <div class="trend-info">
-            <div class="trend-topic">MCP SERVER INTEGRATIONS</div>
-            <div class="trend-meta">r/ClaudeAI · 389 posts · ↑ 74% this week</div>
-          </div>
-          <div class="trend-score warm">📈</div>
-        </div>
-        <div class="trend-item">
-          <div class="trend-rank">05</div>
-          <div class="trend-info">
-            <div class="trend-topic">SUPABASE + AI STACK SETUPS</div>
-            <div class="trend-meta">r/SideProject · 201 posts · ↑ 41% this week</div>
-          </div>
-          <div class="trend-score cold">→</div>
-        </div>
-      </div>
-    </div>
-
   </div>
+</section>
 
-  <div class="feat-grid stagger">
-    <div class="fc"><div class="fc-num">01</div><span class="fc-icon">🔥</span><div class="fc-title">TRENDING TOPICS</div><p class="fc-desc">The conversations gaining traction before they peak on Twitter. Early signal for builders, not lagging indicators.</p></div>
-    <div class="fc"><div class="fc-num">02</div><span class="fc-icon">😤</span><div class="fc-title">PAIN POINT OF THE WEEK</div><p class="fc-desc">Most upvoted frustration from the AI community. Pure product research, handed to you every Sunday.</p></div>
-    <div class="fc"><div class="fc-num">03</div><span class="fc-icon">💡</span><div class="fc-title">OPPORTUNITY SPOTLIGHT</div><p class="fc-desc">A recurring question with no good answer yet. A gap nobody's filled. We surface it so you can build it.</p></div>
-    <div class="fc"><div class="fc-num">04</div><span class="fc-icon">📈</span><div class="fc-title">SUBREDDIT HEAT MAP</div><p class="fc-desc">Which communities are exploding, which are dying, where the conversation is moving. Week over week.</p></div>
-    <div class="fc"><div class="fc-num">05</div><span class="fc-icon">🛠️</span><div class="fc-title">TOOL OF THE WEEK</div><p class="fc-desc">One project or tool that actually got traction this week. Not sponsored — just what Reddit responded to.</p></div>
-    <div class="fc"><div class="fc-num">06</div><span class="fc-icon">⚡</span><div class="fc-title">ONE PROMPT WORTH STEALING</div><p class="fc-desc">A Claude Code workflow or prompt pulled from top posts. Copy-pasteable. Immediately useful.</p></div>
-  </div>
-
-</div>
-</div>
-
+<!-- ============ STACK ============ -->
 <div class="sec-sep"></div>
-
-<!-- STACK -->
-<div class="stack-sec">
-  <div class="reveal">
-    <div class="slabel">THE FULL ARSENAL</div>
-    <h2 class="stitle" style="font-size:clamp(36px,5vw,64px);">EVERYTHING WE<br>BUILD WITH</h2>
+<section class="stack-sec">
+  <div class="slabel reveal">THE FULL ARSENAL</div>
+  <div class="stitle reveal">EVERYTHING WE <span class="c">BUILD WITH</span></div>
+  <div class="stk-grid stagger" style="margin-top:32px">
+    <div class="stk-item sc"><div class="stk-name">Next.js</div><div class="stk-cat">Framework</div></div>
+    <div class="stk-item sc"><div class="stk-name">React</div><div class="stk-cat">UI</div></div>
+    <div class="stk-item sc"><div class="stk-name">TypeScript</div><div class="stk-cat">Language</div></div>
+    <div class="stk-item sc"><div class="stk-name">Tailwind</div><div class="stk-cat">Styling</div></div>
+    <div class="stk-item sp"><div class="stk-name">Supabase</div><div class="stk-cat">Database</div></div>
+    <div class="stk-item sp"><div class="stk-name">PostgreSQL</div><div class="stk-cat">SQL</div></div>
+    <div class="stk-item sp"><div class="stk-name">ChromaDB</div><div class="stk-cat">Vectors</div></div>
+    <div class="stk-item sp"><div class="stk-name">Vercel</div><div class="stk-cat">Hosting</div></div>
+    <div class="stk-item sg"><div class="stk-name">Node.js</div><div class="stk-cat">Runtime</div></div>
+    <div class="stk-item sg"><div class="stk-name">PM2</div><div class="stk-cat">Process Mgmt</div></div>
+    <div class="stk-item so"><div class="stk-name">FFmpeg</div><div class="stk-cat">Video</div></div>
+    <div class="stk-item so"><div class="stk-name">edge-tts</div><div class="stk-cat">Voice</div></div>
+    <div class="stk-item sp"><div class="stk-name">Claude AI</div><div class="stk-cat">Intelligence</div></div>
+    <div class="stk-item sm"><div class="stk-name">VPS</div><div class="stk-cat">Infra</div></div>
+    <div class="stk-item sm"><div class="stk-name">GitHub</div><div class="stk-cat">Version Control</div></div>
+    <div class="stk-item sm"><div class="stk-name">Archive.org</div><div class="stk-cat">Footage</div></div>
   </div>
-  <div class="stk-grid stagger">
-    <div class="si" style="--si-accent:var(--cyan)"><div class="si-info"><div class="sn">Next.js</div><div class="sc2">Framework</div></div></div>
-    <div class="si" style="--si-accent:var(--cyan)"><div class="si-info"><div class="sn">React</div><div class="sc2">UI</div></div></div>
-    <div class="si" style="--si-accent:var(--cyan)"><div class="si-info"><div class="sn">TypeScript</div><div class="sc2">Language</div></div></div>
-    <div class="si" style="--si-accent:var(--cyan)"><div class="si-info"><div class="sn">Tailwind</div><div class="sc2">Styling</div></div></div>
-    <div class="si" style="--si-accent:var(--purple2)"><div class="si-info"><div class="sn">Supabase</div><div class="sc2">Database</div></div></div>
-    <div class="si" style="--si-accent:var(--purple2)"><div class="si-info"><div class="sn">PostgreSQL</div><div class="sc2">SQL</div></div></div>
-    <div class="si" style="--si-accent:var(--purple2)"><div class="si-info"><div class="sn">ChromaDB</div><div class="sc2">Vectors</div></div></div>
-    <div class="si" style="--si-accent:var(--purple)"><div class="si-info"><div class="sn">Vercel</div><div class="sc2">Hosting</div></div></div>
-    <div class="si" style="--si-accent:var(--green)"><div class="si-info"><div class="sn">Node.js</div><div class="sc2">Runtime</div></div></div>
-    <div class="si" style="--si-accent:var(--green)"><div class="si-info"><div class="sn">PM2</div><div class="sc2">Process Mgmt</div></div></div>
-    <div class="si" style="--si-accent:var(--orange)"><div class="si-info"><div class="sn">FFmpeg</div><div class="sc2">Video</div></div></div>
-    <div class="si" style="--si-accent:var(--orange)"><div class="si-info"><div class="sn">edge-tts</div><div class="sc2">Voice</div></div></div>
-    <div class="si" style="--si-accent:var(--purple2)"><div class="si-info"><div class="sn">Claude AI</div><div class="sc2">Intelligence</div></div></div>
-    <div class="si" style="--si-accent:var(--muted)"><div class="si-info"><div class="sn">VPS</div><div class="sc2">Infra</div></div></div>
-    <div class="si" style="--si-accent:var(--muted)"><div class="si-info"><div class="sn">GitHub</div><div class="sc2">Version Control</div></div></div>
-    <div class="si" style="--si-accent:var(--muted)"><div class="si-info"><div class="sn">Archive.org</div><div class="sc2">Footage</div></div></div>
-  </div>
-</div>
+</section>
 
+<!-- ============ SOCIAL / CTA ============ -->
 <div class="sec-sep"></div>
-
-<!-- SOCIAL -->
-<div class="soc-full">
-  <div class="soc-bg"></div>
-  <div class="reveal">
-    <div class="collab">
-      BRIAN<br>
-      <span class="and">+</span><br>
-      <span class="cld">CLAUDE</span>
-    </div>
-    <p style="font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.15em;max-width:400px;margin:0 auto 40px;line-height:1.8;text-transform:uppercase;">
-      Sharing wins, bugs, revenue numbers, and everything in between. Come watch what happens when you let Claude write most of the code.
-    </p>
-    <div class="slinks">
-      <a href="https://x.com/builtbyclaude" target="_blank" class="sl">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        @BUILTBYCLAUDE
-      </a>
-      <a href="https://tiktok.com/@builtbyclaude" target="_blank" class="sl">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.45a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05A6.34 6.34 0 003.6 15.3a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
-        @BUILTBYCLAUDE
-      </a>
-    </div>
+<section class="soc-full">
+  <div class="slabel">// FOLLOW THE BUILD</div>
+  <div class="soc-title">BRIAN<br><span style="color:var(--purple2)">+</span> <span class="grad">CLAUDE</span></div>
+  <p class="soc-sub">Wins, bugs, revenue numbers, and everything in between. Come watch what happens when you let Claude write most of the code.</p>
+  <div class="email-row">
+    <input class="email-input" type="email" id="signalEmail2" placeholder="your@email.com">
+    <button class="email-btn" onclick="subscribeSignal('signalEmail2','signalMsg2')">GET THE SIGNAL</button>
   </div>
-</div>
+  <div id="signalMsg2" class="sub-msg" style="max-width:420px;margin:0 auto;text-align:center;"></div>
+  <div class="email-note">// NO SPAM · ONE EMAIL PER WEEK · UNSUBSCRIBE ANYTIME</div>
+  <div class="social-row">
+    <a href="https://x.com/builtbyclaude" target="_blank" class="sl">𝕏 @BUILTBYCLAUDE</a>
+    <a href="https://tiktok.com/@builtbyclaude" target="_blank" class="sl">TT @BUILTBYCLAUDE</a>
+  </div>
+</section>
 
 <footer>
-  <div class="fl">© 2026 BUILT BY CLAUDE · POWERED BY ANTHROPIC</div>
-  <div class="flinks">
+  <div class="foot-left">© 2026 BUILT BY CLAUDE · POWERED BY ANTHROPIC</div>
+  <div class="foot-right">
     <a href="/terms">TERMS</a>
     <a href="/privacy">PRIVACY</a>
   </div>
 </footer>
 
 <script>
-// ── CURSOR ────────────────────────────────────────────────────────
-const cursor = document.getElementById('cursor');
-const cdot = document.getElementById('cdot');
+// Cursor
 let mx=0,my=0,cx=0,cy=0;
+const cursor=document.getElementById('cursor');
+const cdot=document.getElementById('cdot');
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function anim(){
-  cx+=(mx-cx)*.15;cy+=(my-cy)*.15;
-  cursor.style.left=cx+'px';cursor.style.top=cy+'px';
-  cdot.style.left=mx+'px';cdot.style.top=my+'px';
-  requestAnimationFrame(anim);
-})();
-document.querySelectorAll('a,button,.pn,.fc,.sf,.si,.stat-cell,.trend-item,.sub-badge').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cursor.classList.add('expanded'));
-  el.addEventListener('mouseleave',()=>cursor.classList.remove('expanded'));
-});
+(function anim(){cx+=(mx-cx)*.15;cy+=(my-cy)*.15;cursor.style.left=cx+'px';cursor.style.top=cy+'px';cdot.style.left=mx+'px';cdot.style.top=my+'px';requestAnimationFrame(anim);})();
 
-// ── SCROLL REVEAL ─────────────────────────────────────────────────
-// Uses scroll events + getBoundingClientRect instead of IntersectionObserver
-// to avoid browser quirks when overflow-x:hidden is set on a scroll ancestor.
-const reveals = [...document.querySelectorAll('.reveal')];
-const staggers = [...document.querySelectorAll('.stagger')];
-const staggerDone = new WeakSet();
-
-function inView(el) {
-  const r = el.getBoundingClientRect();
-  return r.top < window.innerHeight * 0.93 && r.bottom > 0;
+// Scroll reveal
+const reveals=[...document.querySelectorAll('.reveal')];
+const staggers=[...document.querySelectorAll('.stagger')];
+const staggerDone=new WeakSet();
+function inView(el){const r=el.getBoundingClientRect();return r.top<window.innerHeight*.93&&r.bottom>0;}
+function runReveals(){
+  reveals.forEach(el=>{if(!el.classList.contains('visible')&&inView(el))el.classList.add('visible');});
+  staggers.forEach(el=>{if(!staggerDone.has(el)&&inView(el)){staggerDone.add(el);[...el.children].forEach((c,i)=>setTimeout(()=>c.classList.add('vis'),i*65));}});
 }
-
-function runReveals() {
-  reveals.forEach(el => {
-    if (!el.classList.contains('visible') && inView(el))
-      el.classList.add('visible');
-  });
-  staggers.forEach(el => {
-    if (!staggerDone.has(el) && inView(el)) {
-      staggerDone.add(el);
-      [...el.children].forEach((c, i) => setTimeout(() => c.classList.add('vis'), i * 65));
-    }
-  });
-}
-
-window.addEventListener('scroll', runReveals, {passive: true});
-// Run immediately so elements already in viewport on load appear at once
+window.addEventListener('scroll',runReveals,{passive:true});
 runReveals();
 
-// ── TERMINAL TICKER ───────────────────────────────────────────────
-const tickerEl=document.getElementById('ticker');
-const ts=()=>{
-  const d=new Date();
-  return[d.getHours(),d.getMinutes(),d.getSeconds()].map(n=>String(n).padStart(2,'0')).join(':');
-};
+// Ticker
 const logs=[
-  ['INFO','SCRAPER','Found 3 new clips — Archive.org query: "senate judiciary hearing 2024"'],
-  ['INFO','RENDERER','Selected 8 archive clips + 0 images for render'],
-  ['INFO','RENDERER','Starting render: "5 Hidden Details in the JFK Files" (long)'],
-  ['INFO','SCRAPER','Scoring 14 candidate clips via relevance model'],
-  ['INFO','VOICEGEN','Generated audio: 47s, 892 words — en-US-ChristopherNeural'],
-  ['INFO','SCRIPTGEN','Writing script for Politics niche (clip-first mode)'],
-  ['INFO','RENDERER','Downloading clip 2/8: CSPAN — Senate Judiciary Committee 2024'],
-  ['WARN','SCRAPER','Duplicate detected — skipping 12 clips already in database'],
-  ['INFO','RENDERER','Filling 16 slots × 5s to cover 78.4s audio (cycling 8 clips)'],
-  ['SUCCESS','RENDERER','Rendered "The Epstein Files: What Media Won\'t Tell You" in 492s — 6.4MB, 18s'],
-  ['INFO','SCRIPTGEN','Fetched 8 rejected videos — injecting rejection patterns into prompt'],
-  ['INFO','SCRAPER','Queried Wikimedia Commons: 6 results, 4 downloadable'],
-  ['INFO','RENDERER','Downloading clip 5/8: State Of The Union 2026'],
-  ['INFO','VOICEGEN','Word-level VTT generated: 312 cue points across 47.2s'],
-  ['WARN','RENDERER','Skipping clip "BTWRLM641": stderr maxBuffer — retrying with next clip'],
-  ['INFO','SCRIPTGEN','Claude tokens used: 1,847 input / 634 output'],
-  ['SUCCESS','VOICEGEN','Audio queued: "Trump vs Biden vs Obama: Immigration Numbers"'],
-  ['INFO','SCRAPER','NASA Image Gallery: 0 results (not a space/science niche)'],
-  ['INFO','RENDERER','Output file verified: 11.2MB, 82.0s — queued for review'],
-  ['SUCCESS','RENDERER','Rendered "Petco Internal Memo — Toxic Cat Toy Cover-Up" in 388s — 6.1MB'],
-  ['INFO','SCRAPER','C-SPAN via IA: 9 results for "federal reserve hearing"'],
-  ['INFO','SCRIPTGEN','Niche: Cats — tone: conversational, learning: per-niche'],
-  ['INFO','RENDERER','Background music mixed at -20dB with 2s fade in/out'],
-  ['INFO','SCRAPER','Archive.org: 23 results, 17 unique, 6 already in DB'],
-  ['INFO','RENDERER','yuv420p output — universal browser support confirmed'],
-  ['SUCCESS','SCRIPTGEN','Script ready: "Why Your Cat Knocks Things Over (Science Explains It)"'],
+  {lvl:'INFO',w:'SCRAPER',m:'Found 3 new clips — Archive.org query: "senate judiciary hearing 2024"'},
+  {lvl:'INFO',w:'RENDERER',m:'Selected 8 archive clips + 0 images for render'},
+  {lvl:'INFO',w:'RENDERER',m:'Starting render: "5 Hidden Details in the JFK Files" (long)'},
+  {lvl:'INFO',w:'SCRAPER',m:'Scoring 14 candidate clips via relevance model'},
+  {lvl:'INFO',w:'VOICEGEN',m:'Generated audio: 47s, 892 words — en-US-ChristopherNeural'},
+  {lvl:'INFO',w:'SCRIPTGEN',m:'Writing script for Politics niche (clip-first mode)'},
+  {lvl:'INFO',w:'RENDERER',m:'Downloading clip 2/8: CSPAN — Senate Judiciary Committee 2024'},
+  {lvl:'WARN',w:'SCRAPER',m:'Duplicate detected — skipping 12 clips already in database'},
+  {lvl:'INFO',w:'RENDERER',m:'Filling 16 slots × 5s to cover 78.4s audio (cycling 8 clips)'},
+  {lvl:'SUCCESS',w:'RENDERER',m:'Rendered "The Epstein Files: What Media Won\'t Tell You" in 492s — 6.4MB, 18s'},
+  {lvl:'INFO',w:'SCRIPTGEN',m:'Fetched 8 rejected videos — injecting rejection patterns into prompt'},
+  {lvl:'INFO',w:'SCRAPER',m:'Queried Wikimedia Commons: 6 results, 4 downloadable'},
+  {lvl:'INFO',w:'RENDERER',m:'Downloading clip 5/8: State Of The Union 2026'},
+  {lvl:'INFO',w:'VOICEGEN',m:'Word-level VTT generated: 312 cue points across 47.2s'},
+  {lvl:'WARN',w:'RENDERER',m:'Skipping clip "BTWRLM641": stderr maxBuffer — retrying with next clip'},
+  {lvl:'INFO',w:'SCRIPTGEN',m:'Claude tokens used: 1,847 input / 634 output'},
+  {lvl:'SUCCESS',w:'VOICEGEN',m:'Audio queued: "Trump vs Biden vs Obama: Immigration Numbers"'},
+  {lvl:'INFO',w:'SCRAPER',m:'NASA Image Gallery: 0 results (not a space/science niche)'},
+  {lvl:'INFO',w:'RENDERER',m:'Output file verified: 11.2MB, 82.0s — queued for review'},
+  {lvl:'SUCCESS',w:'RENDERER',m:'Rendered "Petco Internal Memo — Toxic Cat Toy Cover-Up" in 388s — 6.1MB'},
+  {lvl:'INFO',w:'SCRAPER',m:'C-SPAN via IA: 9 results for "federal reserve hearing"'},
+  {lvl:'INFO',w:'SCRIPTGEN',m:'Niche: Cats — tone: conversational, learning: per-niche'},
+  {lvl:'INFO',w:'RENDERER',m:'Background music mixed at -20dB with 2s fade in/out'},
+  {lvl:'INFO',w:'SCRAPER',m:'Archive.org: 23 results, 17 unique, 6 already in DB'},
+  {lvl:'SUCCESS',w:'SCRIPTGEN',m:'Script ready: "Why Your Cat Knocks Things Over (Science Explains It)"'},
 ];
 let logIdx=0;
+const tickerEl=document.getElementById('ticker');
+function ts(){const d=new Date();return[d.getHours(),d.getMinutes(),d.getSeconds()].map(n=>String(n).padStart(2,'0')).join(':');}
 function addLog(){
-  const[level,worker,msg]=logs[logIdx%logs.length];
-  logIdx++;
-  const lvlClass=level==='SUCCESS'?'lvl-success':level==='WARN'?'lvl-warn':level==='ERROR'?'lvl-error':'lvl-info';
-  const el=document.createElement('div');
-  el.className='tlog';
-  el.innerHTML=`<span class="ts">${ts()}</span><span class="${lvlClass}">[${level}]</span><span class="wrk">[${worker}]</span><span class="msg">${msg}</span>`;
-  tickerEl.appendChild(el);
-  tickerEl.scrollTop=tickerEl.scrollHeight;
-  // Keep max 20 lines to prevent DOM growth
+  const l=logs[logIdx%logs.length]; logIdx++;
+  const div=document.createElement('div'); div.className='tlog';
+  div.innerHTML=`<span class="ts">${ts()}</span><span class="lvl-${l.lvl.toLowerCase()}">${l.lvl}</span><span class="wrk">${l.w}</span><span class="msg">${l.m}</span>`;
+  tickerEl.appendChild(div);
   while(tickerEl.children.length>20)tickerEl.removeChild(tickerEl.firstChild);
+  tickerEl.scrollTop=tickerEl.scrollHeight;
 }
-// Seed with initial lines
 for(let i=0;i<6;i++)addLog();
 setInterval(addLog,2600);
 
-// ── SUBSCRIBE ─────────────────────────────────────────────────────
-async function subscribeSignal() {
-  const email = document.getElementById('signalEmail').value;
-  const msg = document.getElementById('signalMsg');
+// Subscribe
+async function subscribeSignal(inputId, msgId) {
+  const email = document.getElementById(inputId).value;
+  const msg = document.getElementById(msgId);
   if (!email) return;
   msg.textContent = 'SUBSCRIBING...';
-  msg.style.color = '';
+  msg.style.color = 'var(--muted)';
   try {
     const res = await fetch('/api/subscribe', {
       method: 'POST',
@@ -786,20 +666,23 @@ async function subscribeSignal() {
     if (data.success) {
       msg.textContent = '✓ YOU\'RE IN. FIRST ISSUE SUNDAY.';
       msg.style.color = 'var(--green)';
-      document.getElementById('signalEmail').value = '';
+      document.getElementById(inputId).value = '';
     } else {
       msg.textContent = data.error || 'SOMETHING WENT WRONG.';
-      msg.style.color = 'var(--red)';
+      msg.style.color = '#f87171';
     }
   } catch(e) {
     msg.textContent = 'SOMETHING WENT WRONG. TRY AGAIN.';
-    msg.style.color = 'var(--red)';
+    msg.style.color = '#f87171';
   }
 }
 
-// Allow Enter key in email input
+// Enter key on email inputs
 document.getElementById('signalEmail').addEventListener('keydown', e => {
-  if (e.key === 'Enter') subscribeSignal();
+  if (e.key === 'Enter') subscribeSignal('signalEmail', 'signalMsg');
+});
+document.getElementById('signalEmail2').addEventListener('keydown', e => {
+  if (e.key === 'Enter') subscribeSignal('signalEmail2', 'signalMsg2');
 });
 </script>
 </body>
